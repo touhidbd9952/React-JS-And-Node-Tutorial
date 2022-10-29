@@ -56,9 +56,9 @@ For help about new library go to https://www.npmjs.com
 4.	Use date-format library for date
   Create a file inside your project “index.js” and write below code
   
-	var mydate = require('date-format');
-	mydate('dd/MM/yyyy',new Date());
-	console.log(mydate);   // show 28/10/2022 in console
+	let dateformat = require('date-format');
+	let nowdate = dateformat('dd/MM/yyyy', new Date());
+	console.log(nowdate);   // show 28/10/2022 in console
 
 
 /////// 2 type of dependencies/////////////////
