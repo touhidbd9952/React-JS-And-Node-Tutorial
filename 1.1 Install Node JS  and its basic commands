@@ -91,7 +91,9 @@ For help about new library go to https://www.npmjs.com
   a.	unzip the folder
   b.	open it via vs-code
   c.	open terminal of vs-code
-  npm install  // it will install all dependencies libraries that you needed.
+  
+            npm install  // it will install all dependencies libraries that you needed.
+	    
 
 ////To see where project install//////////////////////////
 
