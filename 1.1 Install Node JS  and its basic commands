@@ -1,0 +1,105 @@
+///////Install Node JS  and its basic commands///////////////////////////////////
+
+//to install Node Js
+---------------------------
+    https://nodejs.org/en
+    select LTS version and download and install in your pc
+    
+//Check node js  properly install or not
+-------------------------------------------
+open cmd    //command prompt
+a.	node   //run node js
+b.	node  –v   //show node js version
+c.	.exit  //to close node
+d.	npm  //show node package manager version
+e.	npm  –v
+
+3.	Environment variable Set
+------------------------------
+a.	My computer  right click  properties Advance SettingEnvironment Variable
+b.	 Path Edit new
+      C:\Users\YourPCName\AppData\Roaming\npm
+
+//////Package/Module/Dependency/Library all are some thing/////////////////////////
+
+For help about new library go to https://www.npmjs.com
+
+//////////Create New Project////////////////////////////////////////////
+1.	Create folder in D drive
+2.	Open it by vs-code
+3.	Create project in this folder
+  a.	Open vs-code terminal (terminal menu new terminal)
+  b.	In terminal:
+      npm init //it will create project(package)
+  a.	Package name: projectname
+  b.	Version:  enter
+  c.	Description: “simple description about your project”
+  d.	Entry point: (index.js) //just press enter
+  e.	Test command: enter
+  f.	Git repository: enter
+  g.	Keywords: enter
+  h.	Author: yourname
+  i.	Ok
+////Install a package/library in project and its use/////////////////
+1.	Go to https://www.npmjs.com
+2.	Search by library name “date-format” and see the installation process
+3.	Open vs-code
+            npm install date-format --save  //install library and save in package.json
+            
+            //npm install libraryname@versionname –-save
+            npm install bootstrap@3.3.7 –-save
+            npm uninstall bootstrap –-save  //uninstall library
+            npm update libraryname  //to update library
+
+            (A folder “node modules” will create and all the library will create inside this folder)
+
+4.	Use date-format library for date
+  Create a file inside your project “index.js” and write below code
+  
+	var mydate = require('date-format');
+	mydate('dd/MM/yyyy',new Date());
+	console.log(mydate);   // show 28/10/2022 in console
+
+
+/////// 2 type of dependencies/////////////////
+1.	Dependency only for software development (dev dependency)
+
+      npm install libraryname –-save-dev
+
+2.	Global dependency
+	
+      npm install libraryname –g     //this library will intall in pc
+      npm uninstall libraryname –g   //uninstall global library
+
+      npm install libraryname –-save //library will install in project as dependency
+
+
+////run/execute particular js file///////////////////////////////////
+
+  1. Open terminal  and type below way
+  2. node filename  //enter
+
+////How to send project to other////////
+
+  Copy 2 things 
+  a.	Source files (index.js,….)
+  b.	package.json
+  create a new folder and paste all copied files, zip it and send it via mail
+
+////How to install from zip////////
+
+  a.	unzip the folder
+  b.	open it via vs-code
+  c.	open terminal of vs-code
+  npm install  // it will install all dependencies libraries that you needed.
+
+////To see where project install//////////////////////////
+
+  npm root
+
+////To see where global module is install////////////////
+
+  npm root –g
+
+
+
