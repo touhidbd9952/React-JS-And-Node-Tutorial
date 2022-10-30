@@ -21,6 +21,11 @@
 	git branch -M main  // connect with global repository branch (if exist)
 	git push -u origin main //upload files from project to global repository
 
+from next time, when we update any code in our project then we need to do below task
+	git add .		//add in local repository
+	git commit -m "your message"   //save in local repository
+	git push -u orgin main                  // upload global repository
+
 /////other git command////////////////////////////////////////
 	git  status   // to see which files still not add to git local repository
 	git  log    //to see  all the commited/saved information indetails 
