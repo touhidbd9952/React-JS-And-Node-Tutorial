@@ -1,0 +1,16 @@
+////// Spread Operator ...  is use to make 1 array from multiple array and value /////////////////
+
+let numbers= [1 ,2 ,5, 7]
+let numbers2 = [7, 8, 9]
+let arr = [ ...numbers, ...numbers, 2, 6, 7, 10];  //make 1 array from multiple array and value
+console.log(arr);
+
+
+////// Spread Operator ...  is use to make 1 object from multiple object and value ////////////////
+
+let person = {
+  name : "x",
+  age : 45
+}
+let another = { ...person, nationality: "Bangladeshi"}    //make 1 array from multiple array and value
+
