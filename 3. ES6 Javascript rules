@@ -47,3 +47,15 @@ console.log(abc);
 let saySomething = num => num*num;   
 var abc = saySomething(25);
 console.log(abc);
+
+// Normal multi parameter passing////
+function retSome(num1,num2) {
+  return num1*num2;
+}
+var abc = retSome(25,25);
+console.log(abc);
+
+// Arrow Function multi parameter passing////
+let saySomething = (num1,num2) => num1*num2;   
+var abc = saySomething(25);
+console.log(abc);
