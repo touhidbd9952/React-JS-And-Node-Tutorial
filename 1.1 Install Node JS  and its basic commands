@@ -30,7 +30,7 @@ For help about new library go to https://www.npmjs.com
 3.	Create project in this folder
   a.	Open vs-code terminal (terminal menu new terminal)
   b.	In terminal:
-      npm init //it will create project(package)
+      npm init //it will create project(package)   npm init --yes  //to create a project in short time
   a.	Package name: projectname
   b.	Version:  enter
   c.	Description: “simple description about your project”
