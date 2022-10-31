@@ -1,0 +1,49 @@
+////// Variable Declaration///////////////////////////////////////////////////////////////////////////
+
+// var
+var a = 45;
+console.log(a);
+var a = "Bohubrihi";  // we can declare "var a" when required
+console.log(a);
+
+// let
+let b = 35;
+console.log(b);
+b = "Simanta"  // we can't declare "let b" because variable b already declared. we can only use it
+console.log(b);
+
+// const => constant
+const c = 23;    //constant variable value can't change
+console.log(c);
+
+
+
+////// Arrow Function/////////////////////////////////////////////////////////////////////////////////
+// Normal 
+function showvalue() {
+  console.log("25");
+}
+showvalue();
+
+// Arrow Function
+let saySomething = () => {
+  console.log("25");
+};
+showvalue();
+
+//////Parameter passing////////////////////////////////////////
+// Normal 
+function retSome(num) {
+  return num*num;
+}
+var abc = retSome(25);
+console.log(abc);
+
+// Arrow Function
+let saySomething = (num) => {return num*num;};
+var abc = saySomething(25);
+console.log(abc);
+//or ////
+let saySomething = num => num*num;   
+var abc = saySomething(25);
+console.log(abc);
