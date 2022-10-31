@@ -1,1 +1,41 @@
-///Arrow Function////
+////// Arrow Function/////////////////////////////////////////////////////////////////////////////////
+// Normal 
+function showvalue() {
+  console.log("25");
+}
+showvalue();
+
+// Arrow Function
+let saySomething = () => {
+  console.log("25");
+};
+showvalue();
+
+//////Parameter passing////////////////////////////////////////
+// Normal 
+function retSome(num) {
+  return num*num;
+}
+var abc = retSome(25);
+console.log(abc);
+
+// Arrow Function
+let saySomething = (num) => {return num*num;};
+var abc = saySomething(25);
+console.log(abc);
+//or ////
+let saySomething = num => num*num;   
+var abc = saySomething(25);
+console.log(abc);
+
+// Normal multi parameter passing////
+function retSome(num1,num2) {
+  return num1*num2;
+}
+var abc = retSome(25,25);
+console.log(abc);
+
+// Arrow Function multi parameter passing////
+let saySomething = (num1,num2) => num1*num2;   
+var abc = saySomething(25);
+console.log(abc);
