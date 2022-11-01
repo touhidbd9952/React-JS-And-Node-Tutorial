@@ -1,0 +1,97 @@
+///Data Passing/Export and Data Receive/Import////////////////////////////////
+we can pass/export variable, class, function from one javascript file to other javascript file
+
+There are 2 way to export
+1. default[one time] export
+2. single export [has no limit]. 
+	
+	
+
+///step:1/////////////////////////////////////////////////////////////////////////////////////////////////  
+to do export and import  we need to create module
+if we don't have package.json file in our project, we need to install:
+
+	npm install  --yes
+
+after install package.json, we need to add a key  "type": "module"
+
+//package.json
+{
+  "name": "MyApp",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module"   <==
+}
+
+///step:2////////////////////////////////////////////////////////////////////////////////////////////////// 
+///Exporting 
+
+in a js file (example other.js)
+--------------------------------------------------------
+export let a = 45;      //variable single export
+export let str = "Bohubrihi";
+export let obj = {
+    name: "Rahat", age: 27
+}
+
+let arr = [1, 2, 3, 4]
+
+//function single export//////
+export let hello = () => {
+    console.log("Hello World");
+}
+
+//class single export///////
+export class Person {
+    constructor() {
+        this.name = "ABC"
+    }
+}
+
+export default Person;    //default export is a single export but in one js file can have one default export
+
+
+///step:3////////////////////////////////////////////////////////////////////////////////////////////////// 
+///Import////////////////////////////
+if export single way then to import it:  
+
+	import  { str, a, hello, obj as xyz, Person }  from  './component.js';        /////import {variable1,variable2,...,objec, class}  from './js-filename.js'
+
+if export default way then to import it:  
+	
+	import Application from './other.js';       ///// import variable-name/object-name/class-name  from  './js-filename.js'
+
+
+
+in index.js file
+--------------------------------------------
+//import numbers, { str, a, hello, obj as xyz, Person } from './component.js';
+import Application from './other.js';
+import * as all from './component.js';
+
+// console.log(str);
+
+// hello();
+
+// console.log(xyz);
+
+// let person = new Person();
+
+// console.log(person);
+
+// let newApp = new Application("Some random text");
+
+// console.log(newApp);
+
+// console.log(numbers);
+
+console.log(all.a);
+console.log(all.str);
+all.hello();
