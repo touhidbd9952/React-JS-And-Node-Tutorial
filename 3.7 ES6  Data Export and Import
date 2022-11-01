@@ -62,7 +62,7 @@ export default Person;    //default export is a single export but in one js file
 ///Import////////////////////////////
 if export single way then to import it:  
 
-	import  { str, a, hello, obj as xyz, Person }  from  './component.js';        /////import {variable1,variable2,...,objec, class}  from './js-filename.js'
+	import  { str, a, hello, obj as xyz, Person }  from  './component.js';        /////import {variable1,variable2,...,object, class}  from './js-filename.js'
 
 if export default way then to import it:  
 	
