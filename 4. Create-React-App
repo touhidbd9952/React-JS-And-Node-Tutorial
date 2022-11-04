@@ -1,0 +1,23 @@
+////////Create React App/////////////////////////////////////////////////
+
+Step:1
+a. Open command prompt
+b. to create react app:
+	
+	npm install create-react-app  -g   // install react app globally
+	npm root  -g    // to see where created
+
+Step:2
+a. create a folder in D drive  "My React Apps"
+b. open "My React Apps" --> cmd
+c. create react project:
+
+	create-react-app  hello-world    // create-react-app  project-name
+
+d. run project: 
+
+	npm start
+
+e. Browser: 
+
+	localhost:300
