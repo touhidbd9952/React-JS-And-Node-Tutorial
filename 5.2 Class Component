@@ -1,0 +1,59 @@
+///////Create  Class Component  Person.js///////////////////
+
+import React, {Component} from 'react';
+
+class  Person  extends  Component{
+  constructor(props){
+    super(props);
+  }
+  
+  render(){
+    return(
+      <div>
+        <h3>Name:{this.props.name} and Age:{this.props.age} years </h3>
+        <h4>Extra Info:{this.props.children}</h4>
+      </div>
+    );
+  }
+}
+
+export default Person;
+
+////////////////////////////////////////////////////////////////////////////////////////////////////
+/////Functional Component//////////////
+import React from 'react';
+
+let Person =(props)=>{
+  //console.log(props);
+  return(
+    <div>
+      <h3>Name: {props.name} and Age: {props.age} years</h3>
+    </div>
+  );
+}
+
+export default Person;
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+///////Use class component in App.js/////////////////////////////////
+
+import React, {Component} from 'react';
+import './App.css';
+import Person from './Components/Person';
+
+class App extends Component{
+  render(){
+    return(
+      <div className="App">
+        <h1>Hello World</h1>
+        <Person name="Rahim"  age="30" />
+        <Person name="Karim"  age="28" />
+        <Person name="Jamal"  age="32" />
+        <Person name="Mizan"  age="36" />
+      </div>
+    );
+  }
+}
