@@ -1,0 +1,25 @@
+//////Create component named App in  (App.js)/////////
+
+import React  from 'react';
+import Logo  from './logo-svg';
+import './App.css';
+
+function App(){
+  return (
+      <div className="App">
+        ...... html code .....
+      </div>
+  );
+}
+
+export default App;
+
+
+////////Use/Call  component in index.js file///////////////////
+
+import React  from 'react';
+import ReactDom  from 'react-dom';
+import './index.css';
+import App from './App';
+
+ReactDom.render(<App/>, document.getElementById('root'));
