@@ -1,10 +1,13 @@
+//////Create State for set data in component internally//////////////////////////////////
+//state only can create in class component///
+
 import React, { Component } from 'react';
 import './App.css';
 import Book from './components/Book';
 
 class App extends Component {
   // State
-  // 16.8 
+  // in 16.8 react version
   state = {
     books: [
       { bookName: "1984", writer: "George Orwell" },
@@ -13,10 +16,15 @@ class App extends Component {
     ],
     otherProp: "I am some other Prop"
   }
+  
+  /////in previous react version, state need to write below way////
   // constructor() {
   //   super();
-  //   this.state = {};
+  //   this.state = {
+          //object, variable create here
+        };
   // }
+  
   render() {
     return (
       <div className="App">
