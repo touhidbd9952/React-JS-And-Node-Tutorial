@@ -1,0 +1,57 @@
+///////////Create Book component///////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+import React from 'react';
+import '../stylesheets/Book.css';
+
+const Book = props => {
+    return (
+        <div className="Book">
+            <h3 onClick={props.delete}>Book: {props.bookName}</h3>
+            <h4>Writer: {props.writer}</h4>
+            <input type="text" onChange={props.inputName} value={props.bookName} />
+        </div>
+
+    );
+}
+
+export default Book;
+
+
+//////////////////// Use Book component and data passing by foreach(maping) from state ///////////////////////////////////////////////////////
+
+import React, { Component } from 'react';
+import './App.css';
+import Book from './components/Book';
+
+class App extends Component {
+  state = {
+    books: [
+      { bookName: "1984", writer: "George Orwell" },
+      { bookName: "The Da Vinci Code", writer: "Dan Brown" },
+      { bookName: "The Alchemist", writer: "Paulo Coelho" }
+    ],
+  }
+
+  render() {
+	
+     //foreach loop
+    const books = this.state.books.map((book, index) => {
+      return (
+        <Book
+          bookName={book.bookName}
+          writer={book.writer}
+          delete={() => this.deleteBookState(index)}
+        />
+      );
+    });
+
+    return (
+      <div className="App">
+        <h1 style={style}>Book List</h1>
+        {books}
+      </div>
+    );
+  }
+}
+
+export default App;
