@@ -2,11 +2,15 @@
 
 //Base Class
 class Vehicle {
+  
+  //constructor
   constructor(param1, param2) 
   {
     this.color = param1;
     this.passenger = param2;
   }
+  
+  //method
   saySomething() 
   {
     console.log(this.color);
@@ -18,9 +22,10 @@ class Vehicle {
 // Derived Class
 class Car extends Vehicle 
 {
+  //constructor
   constructor(numWheel, pass, color) 
   {
-    super(color, pass);   //it call base class constructor
+    super(color, pass);   //it call base/parent class constructor and pass parameter
     this.wheel = numWheel;
   }
 }
