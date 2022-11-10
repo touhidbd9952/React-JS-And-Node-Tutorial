@@ -70,11 +70,13 @@ class App extends Component {
   }
 
   render() {
-    console.log(this.state);
+    //console.log(this.state);
     return (
       <div className="App">
         <h1>Book List</h1>
+        
         <button onClick={this.changeBookState}>Change State</button>
+        
         <Book
           bookName={this.state.books[0].bookName}
           writer={this.state.books[0].writer} />
