@@ -1,41 +1,43 @@
-////// Arrow Function/////////////////////////////////////////////////////////////////////////////////
-// Normal 
+////// Function Types/////////////////////////////////////////////////////////////////////////////////
+
+// 1. Normal Function
 function showvalue() {
   console.log("25");
 }
-showvalue();
+showvalue();  //call function
 
-// Arrow Function
+// 2. Arrow Function
 let saySomething = () => {
   console.log("25");
 };
-showvalue();
+saySomething(); //call function
+
 
 //////Parameter passing////////////////////////////////////////
 // Normal 
 function retSome(num) {
   return num*num;
 }
-var abc = retSome(25);
+var abc = retSome(25);  //call function and passing parameter
 console.log(abc);
 
 // Arrow Function
 let saySomething = (num) => {return num*num;};
-var abc = saySomething(25);
+var abc = saySomething(25);  //call function and passing parameter
 console.log(abc);
 //or ////
 let saySomething = num => num*num;   
-var abc = saySomething(25);
+var abc = saySomething(25);  //call function and passing parameter
 console.log(abc);
 
 // Normal multi parameter passing////
 function retSome(num1,num2) {
   return num1*num2;
 }
-var abc = retSome(25,25);
+var abc = retSome(25,25);  //call function and passing parameter
 console.log(abc);
 
 // Arrow Function multi parameter passing////
 let saySomething = (num1,num2) => num1*num2;   
-var abc = saySomething(25);
+var abc = saySomething(25);  //call function and passing parameter
 console.log(abc);
