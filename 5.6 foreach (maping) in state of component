@@ -6,6 +6,7 @@ import '../stylesheets/Book.css';
 const Book = (props) => {
     return (
         <div className="Book">
+	    <input type="hidden" id="bookid" value="{props.id}" />
             <h3>Book: {props.bookName}</h3>
             <h4>Writer: {props.writer}</h4>
         </div>
@@ -48,6 +49,7 @@ deleteBookState = (index) => {
     const books = this.state.books.map((item, index) => {
       return (
         <Book
+	  key={item.id}
           bookName={item.bookName}
           writer={item.writer}
           delete={() => this.deleteBookState(index)}
