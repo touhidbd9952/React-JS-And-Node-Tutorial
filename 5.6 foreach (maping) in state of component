@@ -45,7 +45,7 @@ deleteBookState = (index) => {
   
   render() {
 	
-     //foreach loop
+     //foreach loop use map()
     const books = this.state.books.map((book, index) => {
       return (
         <Book
