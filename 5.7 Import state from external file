@@ -1,0 +1,27 @@
+//////company.js///////
+1. create a folder in "src" named "assets"
+2. create a file in "src/assets/" named "company.js"
+
+in company.js
+----------------
+const company =[{name:"....", address:"....", email:"....", phone:"...."}]
+export default company;
+
+in MainComponent.js
+--------------------
+import React{Companent} from 'react';
+import company from '../assets/company.js';
+
+class MainComponent extends Companent{
+  
+  state = {
+    companyinfo : company,
+  }
+  
+  render(){
+    return {
+      .......
+      .......
+    }
+  }
+}
