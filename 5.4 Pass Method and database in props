@@ -1,0 +1,120 @@
+Working Flow
+---------------------------
+
+MainComponent <-- bookdb
+   /\
+   ||
+   \/
+ BookList <---> book
+   
+
+
+//////////bookdb.js///////////////////////////////////////////////////
+
+const bookdb = [
+    { id: 1, bookName: "1984", writer: "George Orwell" },
+    { id: 2, bookName: "The Da Vinci Code", writer: "Dan Brown" },
+    { id: 3, bookName: "The Alchemist", writer: "Paulo Coelho" },
+    { id: 4, bookName: "Animal Farm", writer: "George Orwell" }
+]
+
+export default bookdb;
+
+///////////Book.js component/////////////////////////////////////////////
+
+import React from 'react';
+import '../../stylesheets/Book.css';
+
+const Book = (props) => {
+    return (
+        <div className="Book">
+            <h3 onClick={props.deleteBookState}>Book: {props.bookName}</h3>
+            <h4>Writer: {props.writer}</h4>
+            <input type="text" onChange={props.inputName} value={props.bookName} />
+        </div>
+
+    );
+}
+
+export default Book;
+
+///////////BookList.js component/////////////////////////////////////////////
+
+import React from 'react';
+import Book from '../representational/Book';  // Book component
+
+const BookList = (props) => {
+    return (
+		//foreach loop
+        props.bookdb.map((b, index) => {
+            return (
+                <Book
+                    bookName={b.bookName}
+                    writer={b.writer}
+                    deleteBookState={() => props.deleteBookState(index)}
+                    key={b.id}
+                    inputName={(event) => props.changeWithInputState(event, index)}
+                />
+            );
+        })
+    );
+}
+
+export default BookList;
+
+
+//////////MainComponent.js//////////////////////////////////////////////////
+
+import React, { Component } from 'react';
+import BookList from './lists/BookList';   //Booklist Component
+import bookdb from '../assets/bookdb';   //book database 
+
+
+class MainComponent extends Component 
+{
+	//property
+    state = {
+        bookdb: bookdb,
+        showBooks: true
+    }
+
+	//method
+    changeWithInputState = (event, index) => {
+        const  abook = { ...this.state.bookdb[index] }   //take a copy  of a record  from bookdb by  index
+        abook.bookName = event.target.value;   // change book name from input field value;
+        const newbookdb = [...this.state.bookdb];   // take a copy of bookdb
+        newbookdb[index] = abook;  // update bookdb
+        this.setState({ bookdb: newbookdb }); // replace bookdb by newbookdb
+    }
+
+	//method
+    deleteBookState = (index) => {
+        const  newbookdb = [...this.state.bookdb];  //take a copy of bookdb
+        newbookdb.splice(index, 1); //delete one record
+        this.setState({
+            bookdb: newbookdb // replace bookdb by newbookdb
+        });
+    };
+
+	//render method of class component
+    render() 
+	{
+        const style = { border: "1px solid red", borderRadius: "5px", backgroundColor: "black", color: "white",  };
+
+        let  mybooklist = null;
+        mybooklist = <BookList    bookdb={this.state.bookdb}  deleteBookState={this.deleteBookState}  changeWithInputState={this.changeWithInputState}  />
+        
+        return 
+		(
+            <div className="App">
+                <h1 style={style}>Book List</h1>
+				
+				//show my book list
+                {mybooklist}
+				
+            </div>
+        );
+    }
+}
+
+export default MainComponent;
