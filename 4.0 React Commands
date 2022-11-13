@@ -1,3 +1,7 @@
 ///multiple package install
 ------------------------------------
 npm install bootstrap@4.5.0 reactstrap@8.5.1 react-popper@2.2.3 --save
+
+///date format package install
+------------------------------------
+npm install dateformat --save
