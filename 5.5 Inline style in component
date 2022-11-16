@@ -42,7 +42,7 @@ class App extends Component {
     };
     console.log(this.state);
     return (
-      <div className="App" style={{border:1px solid #000, padding-top:10px}}>
+      <div className="App" style={{border:"1px solid #000", paddingTop:"10px",}}>
         <h1 style={booktitlebar}>Book List</h1>
         <button onClick={() => this.changeBookState("Nineteen Eighty-Four")}>Change State</button>
         <input type="text" onChange={this.changeWithInputState} />
