@@ -1,4 +1,75 @@
 // Classes: a class is a template to create objects
+example-1
+-------------
+class ClassName
+{
+
+}
+
+example-2
+-------------
+class ClassName
+{
+  constructor()
+  {
+  
+  }
+}
+
+example-3
+-------------
+class ClassName1
+{
+  constructor(carname)
+  {
+    this.carname = carname;
+  }
+  show()
+  {
+    return "I have a " + this.carname;
+  }
+}
+
+example-4
+-------------
+class ClassName2 extends ClassName1
+{
+  constructor(carname, color)
+  {
+    super(carname);
+    this.color = color
+  }
+}
+
+example-5
+-------------
+class ClassName2 extends ClassName1
+{
+  constructor(color, carname)
+  {
+    super(carname);
+    this.color = color
+  }
+  show()
+  {
+    return 'It is ' + this.carname +" color";
+  }
+}
+let classname2Obj = new ClassName2('yellow',20);
+classname2Obj.show();
+
+
+//output:
+          I have a .....carname.....
+          It is .....colorname.... color
+
+
+
+
+
+
+
+
 
 //Base Class
 class Vehicle {
