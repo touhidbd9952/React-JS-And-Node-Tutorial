@@ -1,4 +1,8 @@
 ////// Function Types/////////////////////////////////////////////////////////////////////////////////
+Normal Function                           Arrow Function
+----------------                          ------------------
+function FunctionName(){}                 let FunctionName = () =>{}
+
 
 // 1. Normal Function
 function showvalue() {
