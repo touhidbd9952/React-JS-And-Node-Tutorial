@@ -18,50 +18,30 @@ class ClassName
 
 example-3
 -------------
-class ClassName1
-{
-  constructor(carname)
-  {
-    this.carname = carname;
+class Car {
+  constructor(name) {
+    this.brand = name;
   }
-  show()
-  {
-    return "I have a " + this.carname;
+
+  present() {
+    return 'I have a ' + this.brand;
   }
 }
 
-example-4
--------------
-class ClassName2 extends ClassName1
-{
-  constructor(carname, color)
-  {
-    super(carname);
-    this.color = color
+class Model extends Car {
+  constructor(name, mod) {
+    super(name);
+    this.model = mod;
+  }  
+  show() {
+    return this.present() + ', it is a ' + this.model
   }
 }
 
-example-5
--------------
-class ClassName2 extends ClassName1
-{
-  constructor(color, carname)
-  {
-    super(carname);
-    this.color = color
-  }
-  show()
-  {
-    return 'It is ' + this.carname +" color";
-  }
-}
-let classname2Obj = new ClassName2('yellow',20);
-classname2Obj.show();
+const mycar = new Model("Ford", "Mustang");
+document.write(mycar.show());
 
 
-//output:
-          I have a .....carname.....
-          It is .....colorname.... color
 
 
 
