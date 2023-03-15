@@ -35,7 +35,7 @@ Keywords:
 
     <script type="text/babel">
       function Hello() 
-	  {
+      {
         return (
 	     <div>
 		<h1>Hello World!</h1>
@@ -67,19 +67,20 @@ Keywords:
 
 <script type="text/babel">
 
-     class Hello extends React.Component 
+    class Hello extends React.Component 
     {
         render() 
        {	
-     	return (
-                   	<div>
-                       	     <h1>Hello World!</h1>
-                   	</div>
+     	   return (
+                   <div>
+                       <h1>Hello World!</h1>
+                   </div>
                 );
         }
      }
 
-	ReactDOM.render(<Hello />, document.getElementById('mydiv'))
+     ReactDOM.render(<Hello />, document.getElementById('mydiv'))
+     
 </script>
 
   </body>
