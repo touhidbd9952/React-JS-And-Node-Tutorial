@@ -1,0 +1,134 @@
+////////////////////////////////////////////////////////Function Component (Data Passing) ////////////////////////////////
+rules: function name and class name first letter should be capital
+rules: function Functionname(){return (<div></div>);}
+rules: class Hello extends React.Component{render(){return (<div></div>);}}
+rules: ReactDOM.render(<Hello />, document.getElementById('mydiv'))
+
+Keywords: 
+1. ReactDOM
+2. React
+3. Component 
+4. extends
+5. return (<div></div>);     //for function
+6. render(){return (<div></div>);}     //for class
+7. constructor(props){}    //for class
+8. super(props);    //for class
+9.this.state = { key : value, }  //for class
+10. this.state.key.map(d => <Componentname name={d.name} age={d.age} />)     //class
+11. personlist.map(d => <Componentname name={d.name} age={d.age} />)     
+
+
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  </head>
+  
+  
+  <body>
+
+    <div id="mydiv"></div>
+
+<script type="text/babel">
+
+  function Person(props)
+	{
+		return (
+			<div>
+			    <p>Name: {props.name}</p>
+			     <p>Age: {props.age}</p>
+			</div>
+		);
+	}
+	
+  function Person_Data() 
+  {   
+			 const personlist = [
+			{name: "Karim", age: 30},
+			{name: "Rahim", age: 27},
+			{name: "Monir", age: 31},
+		  ];
+		  
+      return (
+	            <div>
+			            { personlist.map((d) =>  <Person  name={d.name}  age={d.age} />) }
+	            </div>
+	          );
+ }
+
+	ReactDOM.render(<Person_Data />, document.getElementById('mydiv'))
+</script>
+
+  </body>
+</html>
+
+
+
+////////////////////////////////////////////////////////Class Component ////////////////////////////////
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  </head>
+  
+  
+  <body>
+
+    <div id="mydiv"></div>
+
+<script type="text/babel">
+
+const personlist = [
+		{name: "Karim", age: 30},
+		{name: "Rahim", age: 27},
+		{name: "Monir", age: 31},
+	            ];
+		  
+		  
+function Person(props)
+{
+     return (
+	   <div>
+	        <p>Name: {props.name}</p>
+	        <p>Age: {props.age}</p>
+	     </div>
+	);
+}
+	
+	  
+class Person_Data extends React.Component 
+{
+	constructor(props) 
+	{
+	   super(props);
+	    this.state = {personlist:personlist}
+	}
+		
+  render() 
+  {	
+     return (
+		           <div>
+		             {
+		               this.state.personlist.map(d => <Person name={d.name}  age={d.age}/>)
+		             }
+		           </div>
+           );
+  }
+}
+
+ReactDOM.render(<Person_Data /> , document.getElementById('mydiv'))
+
+</script>
+
+  </body>
+</html>
+
+
+
+
