@@ -1,0 +1,133 @@
+///////Node Js install//////////////////////
+1. go to https://nodejs.org/en/
+2. select (LTS Version/ most use version) 12.18.2 LTS. dowload and install
+3. check node js installed or not (open command prompt and type: node -v)
+4. to close node js (type: .exit)
+
+////How to work/////////////////////
+Create a file "script.js" and in this file type:
+	
+	console.log("Hello World");
+
+to run the "script.js" file:
+	a. select the folder where this file is located --> cmd
+	b. node script.js  
+
+////////////////////////////////////////////////////////////////////////////////////////////
+when you install node.js in your pc, another software "npm" node package manager will automatically
+install in your pc
+
+npm is a tool that required to install node js package(module/dependency/library). 
+
+you can check your npm version: npm -v     //npm --version
+
+///////////////////////////////////////////////////////////////////////////////////////////
+
+//////set environment variable of your pc for node///////////////////////
+
+1. right click on "pc/computer" --> properties --> Advanced System Settings
+     --> Environment Variables
+
+        in "User variables for ..." 
+          	select "Path" ---> Edit 
+	(here you have to check npm path is setted or not)
+	if not exist, then click on "New" and type below
+	"C:\Users\.....Your PC User Name.....\AppData\Roaming\npm"
+
+
+///////////https://www.npmjs.com/////////////////////////////////////
+you will get node package list in this site with documentation.
+
+search npm package in search bar that you required
+
+1. date-format
+
+
+///////////npm command//////////////////////////////////////////////////
+npm help
+npm init
+
+
+
+/////Basic npm project////////////////////////////////////////////////
+1. create a folder "MYAPP" and open it by vs code
+2. open terminal and type below
+	npm init    //to initialize (it will create package.json file)
+	
+     package name: enter
+     version: enter
+     description: "Learning NPM"
+     entry point: enter
+     test command: enter
+     git repository: enter
+     keywords: enter
+     author: "Touhid"
+     license: enter
+     is this OK? (yes) : enter
+
+ "package.json" will create in "MYAPP"
+
+
+
+3.  package install in "MYAPP"
+	
+	npm install date-format --save    //"--save" this flag is use to add package name in package.json file
+	npm install bootstrap --save       //npm install bootstrap@3.3.7 --save
+	npm uninstall bootstrap --save   //for uninstall package
+	npm update date-format             //update package by latest version
+	npm install live-server --save-dev   // install live-server package only for development project in local machine, not for server
+	npm install typescript -g     //install package in your pc (not only for project)
+	npm root -g       // to see where global dependency is installed
+	npm uninstall typescript -g  //to uninstall global dependency
+
+
+4. work in node project, create a file "index.js" in "MYAPP"
+
+	in "index.js"
+	-----------------------
+	
+	let dateformat = require('date-format');
+	let time = dateformat('hh:mm:ss.SSS', new Date());     //dateformat('hh:mm:ss', new Date()); 
+						//dateformat('dd/MM/yyyy', new Date()); 
+	console.log(time);
+
+5. to run "index.js" in terminal
+	
+	node index.js       //node index
+
+
+6. if you want to give someone your project, you have to do the below task
+
+	create a folder "myapp" and open it
+	a. copy "package.json" and paste in it
+	b. copy all source files (.js) and paste in it
+
+	give "myapp" folder to him
+
+7. how to run project form "myapp"
+
+	a. open "myapp" by vscode
+	b. open terminal of vscode and type below code
+
+		npm install   //npm will install all the dependencies on the base of "package.json"
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
+ 
+
+
+
+
+
+
