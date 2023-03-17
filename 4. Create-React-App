@@ -15,7 +15,8 @@ c. create react project:
 	create-react-app  hello-world    // create-react-app  project-name
 
 d. run project: 
-
+	
+	cd hello-world
 	npm start
 
 e. Browser: 
