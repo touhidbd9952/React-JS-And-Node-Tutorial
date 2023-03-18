@@ -1,4 +1,45 @@
 ProjectName
-|-Node_module(folder)
-|-Public(folder)
-|-src
+|---Node_module(folder)
+|---Public(folder)
+|---src
+|   |------Assets
+|   | 	    |---Styles(folder)
+|	  |       |---Images(folder)
+|   |	
+|   |------Components
+|	  |       |---Card(folder)
+|	  |       |-----index.js	
+|   |
+|   |------Config(folder)
+|	  |       |---config.js	
+|   |
+|   |------Layouts(folder)
+|	  |       |---Footer(folder)
+|	  |	      |    |---index.js
+|	  |       |---Header(folder)
+|	  |       |---Main(folder)
+|	  |
+|   |------Middleware(folder)
+|	  |       |---get-api.js
+|	  |       |---index.js
+|   |
+|   |------Pages(folder)
+|	  |       |---Dashboard(folder)
+|		|             |---index.js
+|   |
+|   |------Routes(folder)
+|	  |       |---index.js
+|	  |       |---privateRoute.js
+|	  |       |---peotectedRoute.js
+|   |
+|   |------Services(folder)
+	          |---Actions(folder)
+	          |	      |---dashboardAction.js
+	          |---Reducers(folder)
+	          |	      |---dashboardReducer.js
+	          |	      |---index.js
+	          |---Constants(folder)
+	          |	      |---dashboardConstants.js
+	          |---Utils(folder)
+		                |---dateFormat(folder)
+			                      |---index.js
