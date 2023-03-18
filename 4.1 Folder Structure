@@ -4,14 +4,14 @@ ProjectName
 |---src
 |   |------Assets
 |   | 	    |---Styles(folder)
-|	  |       |---Images(folder)
+|   |       |---Images(folder)
 |   |	
 |   |------Components
-|	  |       |---Card(folder)
-|	  |       |-----index.js	
+|   |       |---Card(folder)
+|   |       |-----index.js	
 |   |
 |   |------Config(folder)
-|	  |       |---config.js	
+|   |       |---config.js	
 |   |
 |   |------Layouts(folder)
 |	  |       |---Footer(folder)
