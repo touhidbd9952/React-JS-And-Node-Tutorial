@@ -14,23 +14,23 @@ ProjectName
 |   |       |---config.js	
 |   |
 |   |------Layouts(folder)
-|	  |       |---Footer(folder)
-|	  |	      |    |---index.js
-|	  |       |---Header(folder)
-|	  |       |---Main(folder)
-|	  |
+|   |       |---Footer(folder)
+|   |	    |    |---index.js
+|   |       |---Header(folder)
+|   |       |---Main(folder)
+|   |
 |   |------Middleware(folder)
-|	  |       |---get-api.js
-|	  |       |---index.js
+|   |       |---get-api.js
+|   |       |---index.js
 |   |
 |   |------Pages(folder)
-|	  |       |---Dashboard(folder)
-|		|             |---index.js
+|   |       |---Dashboard(folder)
+|   |             |---index.js
 |   |
 |   |------Routes(folder)
-|	  |       |---index.js
-|	  |       |---privateRoute.js
-|	  |       |---peotectedRoute.js
+|   |       |---index.js
+|   |       |---privateRoute.js
+|   |       |---peotectedRoute.js
 |   |
 |   |------Services(folder)
 	          |---Actions(folder)
