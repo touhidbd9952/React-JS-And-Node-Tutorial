@@ -3,12 +3,26 @@ ProjectName
 |---Public(folder)
 |---src
 |   |------Assets
-|   | 	    |---Styles(folder)
-|   |       |---Images(folder)
+|   | 	    |---css(folder)
+|   |       |---img(folder)
+|   |	    |---js(folder)
 |   |	
 |   |------Components
 |   |       |---Card(folder)
-|   |       |-----index.js	
+|   |       |    |----Card.jsx
+|   |       |    |----Card.css
+|   |       |---Home(folder)
+|   |       |    |----Home.jsx
+|   |       |    |----Home.css
+|   |       |---About(folder)
+|   |       |    |----About.jsx
+|   |       |    |----About.css
+|   |       |---Contact(folder)
+|   |       |    |----Contact.jsx
+|   |       |    |----Contact.css
+|   |       |---Header(folder)
+|   |            |----Header.jsx
+|   |            |----Header.css
 |   |
 |   |------Config(folder)
 |   |       |---config.js	
