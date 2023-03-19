@@ -1,11 +1,11 @@
 ProjectName
 |---Node_module(folder)
 |---Public(folder)
-|---src
 |   |------Assets
 |   | 	    |---css(folder)
 |   |       |---img(folder)
 |   |	    |---js(folder)
+|---src
 |   |	
 |   |------Components
 |   |       |---Card(folder)
