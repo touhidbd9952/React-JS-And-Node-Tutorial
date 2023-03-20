@@ -274,5 +274,13 @@ class		====>             className
 2. Auto Import- ES6, TS, JSX, TSX
 
 
+/////////Problem: VS Code Ctrl + S remove formatting - react//////////////
+
+1. Check the extension you installed.
+2. Solution: disable "JS-CSS-HTML Formatter" extension solved the issue.
+
+
+
+
 
 
