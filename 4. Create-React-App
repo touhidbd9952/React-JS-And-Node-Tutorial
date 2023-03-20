@@ -1,13 +1,14 @@
 ////////Create React App/////////////////////////////////////////////////
 
-Step:1
+////Step:1/////////////////////////////////////////////////
 a. Open command prompt
 b. to create react app:
 	
 	npm install create-react-app  -g   // install react app globally
 	npm root  -g    // to see where created
 
-Step:2
+////Step:2////////////////////////////////////////////////
+
 a. create a folder in D drive  "My React Apps"
 b. open "My React Apps" --> cmd
 c. create react project:
@@ -22,3 +23,256 @@ d. run project:
 e. Browser: 
 
 	http://localhost:3000
+
+
+////Step-3: clean messages///////
+open vscode
+
+1. go to public --> index.js  and clean all coments
+
+////Step-4: clean "App.js" as below///////////////////
+
+import './App.css'
+
+function App(){
+   return (
+     <div className="App">
+  
+         //remove inside all html code  
+    
+      </div>
+)
+}
+
+////Step-5: go to "App.css" and open it and remove all css code and below css//////////////////////////////
+
+*{
+    margin:0px;
+    padding:0px;
+}
+
+////Step-6: open "App.js" and type below and check in browser if shows, it means everything is ok/////////////////
+
+import './App.css'
+
+function App(){
+   return (
+     <div className="App">
+  
+         <h1>Hello Everybody</h1>  
+    
+      </div>
+)
+}
+
+////Step-7: Create Component and Use
+1. first create a folder "pages" in SRC
+2. create a file for component as "Home.jsx" in "pages" folder
+
+     a. in Home.jsx, type "rfce" and press enter   //rfce : react function component export
+     	in Home.jsx (component)
+	---------------------------------
+	import React from 'react'
+	function Home() {
+	   return (
+	       <div>Home Page</div>
+	  )
+	}
+
+
+   //// Add Component in "App.js"
+
+	import "./App.css"
+	import Home from "./pages/Home";     //import component
+	import About from "./pages/About";
+	import About from "./pages/Contact";
+	import About from "./pages/Header";
+
+	function App() {
+	    return (
+	         <div className="App">
+	    	<Header />
+		<Home />     //call component
+		<About />
+		<Contact />
+	          </div>
+	     );
+	}
+
+    //// Check Browser
+
+
+////Step-8: For "Home.jsx",  Create a CSS file "Home.css" in "pages" folder and connect in "Home.jsx" file
+
+  a.  in Home.css
+    ------------------
+	.home h1{color:black;}
+
+
+   b.  connect "Home.css" in "Home.js" component
+	
+	import React from 'react'
+	import "./Home.css"      //import css
+
+	function Home(){
+	   return (
+	      <div className="home">
+	         <h1>This is Home Page</h1>
+	      </div>
+	   )
+	}
+
+//every page has one .jsx file and one .css file
+
+////Step-9: create a file "Header.jsx" as component where navbar will set
+
+	import React from 'react'
+	import "./Header.css"      //import css
+
+	function Header(){
+	   return (
+	      <div className="Navbar">
+	         <li>Home</li>
+	         <li>About</li>
+	          <li>Contact</li>
+	      </div>
+	   )
+	}
+
+
+////Step-10: install react-router-dom  and set route path in "App.js"
+
+	npm install react-router-dom
+
+
+	in "App.js"
+	----------------
+	import "./App.css"
+	import Home from "./pages/Home";     
+	import About from "./pages/About";
+	import Contact from "./pages/Contact";
+	
+	import {BrowserRouter, Routes, Route} from "react-router-dom"   //import
+
+	function App() {
+	    return (
+	         <BrowserRouter>
+	           <Routes>
+		     <Route path="/" element={<Home />}></Route>
+		     <Route path="/About" element={<About />}></Route>
+		     <Route path="/Contact" element={<Contact />}></Route>
+	            <Routes/>
+	         </BrowserRouter>
+	     );
+	}
+
+
+Step-11: Create Header.jsx and add <Header> component in every page
+     //in Header.jsx
+     --------------------
+      	import React from 'react'
+	import "./Header.css"      //import css
+	import {Link} from "react-router-dom"   //import Link
+	
+	function Header(){
+	   return (
+	      <div className="">
+	         <ul>
+	            <li> <Link  to={"/"}>Home</Link> </h1>
+	            <li> <Link  to={"/About"}>About</Link> </h1>
+	            <li> <Link  to={"/Contact"}>Contact</Link> </h1>
+	         </ul>
+	      </div>
+	   )
+	}
+
+    //add Header component in Home.jsx
+    ---------------------
+	import React from 'react'
+	import "./Home.css"      //import css
+	import  Header from "./Header"   //import Header
+
+	function Home(){
+	   return (
+	      <div className="home">
+	         <Header />
+	         <h1>This is Home Page</h1>
+	      </div>
+	   )
+	}
+
+    //add Header component in About.jsx
+    ---------------------
+	import React from 'react'
+	import "./About.css"      //import css
+	import  Header from "./Header"   //import Header
+
+	function About(){
+	   return (
+	      <div className="">
+	         <Header />
+	         <h1>This is About Page</h1>
+	      </div>
+	   )
+	}
+
+    //add Header component in Contact.jsx
+    ---------------------
+	import React from 'react'
+	import "./Contact.css"      //import css
+	import  Header from "./Header"   //import Header
+
+	function Contact() {
+	   return (
+	      <div className="">
+	         <Header />
+	         <h1>This is Contact Page</h1>
+	      </div>
+	   )
+	}
+
+
+
+
+///////How to convert html template page to JSX///////////////////////////////////
+if you have a website that is develop by html, css, and js. You can convert this to JSX code.
+you have to follow below step
+1. in "public" folder of react app, create a folder "assets"
+2. in "assets" folder, create css, js, img folder
+3. copy all css files from your templates in "css" folder, js files in "js" folder and image in "img" folder
+4. in "public" folder, there is a file "index.html". in "index.html", you have to set css and js link
+      <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+       :
+
+    <div id="root"></div>
+
+      <script src="assets/js/bootstrap.min.js"></script>
+      :
+
+5. now, you need to copy your template (home) page code to Home.jsx file
+
+     after copy and paste, you have to do the below task (in jsx, all tag must have end (/))
+     a. <br> ==> <br/>
+     d. <img src".." > ==> <img src="/assers/img/image1.jpg" />
+     c. convert html all comment to jsx comment
+     
+
+	
+/////Some Rules in ReactJS///////////////////////////////////////////
+HTML			          JSX
+---------		          -------------
+class		====>             className
+<li><a href=""></a></li> ====> <li> <Link  to={"/"}>Home</Link> </h1>
+
+2. css link
+    ----------------
+   import './App.css'
+
+
+//////React VSCode Extension//////////////////////////////
+1. ES7 + React/Redux/React-Native snippets
+2. Auto Import- ES6, TS, JSX, TSX
+
+
+
+
