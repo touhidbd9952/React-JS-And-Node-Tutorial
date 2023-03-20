@@ -142,7 +142,10 @@ function App(){
 
 ////Step-10: install react-router-dom  and set route path in "App.js"
 
-	npm install react-router-dom
+	npm install react-router-dom   
+	or 
+	npm i -D react-router-dom@latest
+	
 
 
 	in "App.js"
