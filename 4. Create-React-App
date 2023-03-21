@@ -402,6 +402,241 @@ function Home() {
 export default Home
 
 
+///////////////////////////////props , state, setState///////////////////////////////////////////////
+props:
+1. props are read only
+2. props can not be modifired
+
+state:
+--------
+1. state can use read and write data
+2. state can be modified by using (this.setState)
+3. state is a (buil-in react) object use to contain data
+4. to use state, we need to create class component
+
+
+import React, { Component } from 'react'
+
+export default class StudentProfile extends Component {
+    constructor(props) {
+      super(props)
+    
+      this.state = {
+         name:"karim",
+         age:27,
+         profession:"Teacher",
+      }
+    }
+
+    changeData = () =>{
+        this.setState(
+                {
+                    name: "Rahim",
+                    age:50,
+                    profession:"Manager",
+                }
+            );
+
+    }
+
+  render() {
+    return (
+      <>
+      <h2>StudentProfile</h2>
+      <p>Name: {this.state.name}</p>
+      <p>Age: {this.state.age}</p>
+      <p>Profession: {this.state.profession}</p>
+      <button onClick={this.changeData}>Change</button>
+      </>
+    )
+  }
+}
+
+////////////////////////Fragments///////////////////////////////////////////////////////////////////////////////
+1. every component has a parent <div> inside return() statement. When 
+    component is connected in "App.js", this div will show there. if we want
+    we can hide this by replace <React.Fragment> </React.Fragment>
+2. to use <React.Fragment> </React.Fragment>, we need to import
+	
+	import React from 'react'
+
+3. alternative way:  use of <> </> inseed of <React.Fragment> </React.Fragment>
+     
+	
+in Home.jsx
+-----------------
+import React from 'react'
+import "./Home.css"
+import Header from './Header'
+import Student from './Student'
+
+function Home() {
+  return (
+    <React.Fragment>      //use for hide div
+      <Header/>
+      <Student/>
+    </React.Fragment>
+  )
+}
+export default Home
+
+////////////////////Event//////////////////////////////////////////////////////////////////////////////////
+Clipboard Events: 
+	onCopy 
+	onCut
+	onPaste
+Focus Events:
+	onFocus
+	onBlur
+Keyboard Events:
+	onKeyDown
+	onKeyPress
+	onKeyUp
+Mouse Events:
+	onMouseUp
+	onMouseDown
+	onMoveMove
+	onClick
+
+//example
+----------------
+import React from 'react'
+import "./Home.css"
+import Header from './Header'
+import Student from './Student'
+
+
+function Home() {
+  const copyalert = () =>{
+    alert('copied');
+  }
+  return (
+    <div className='container'>
+      <Header/>
+      <Student/>
+      <p onCopy={copyalert}>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatem, quo?</p>
+    </div>
+  )
+}
+
+export default Home
+
+
+////////////////////////////if...else in component/////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+import React, { Component } from 'react'
+
+export default class StudentProfile extends Component {
+    constructor(props) {
+      super(props)
+    
+      this.state = {
+         adult_age:false,
+      }
+    }
+
+    }
+
+  render() {
+    return (
+      <>
+      {
+         if(this.state.adult_age)
+        {
+	return (
+		<>
+		     <h1>Admin Panel</h1>
+		</>
+	);
+        }
+        else
+        {
+      	return (
+		<>
+		     <h1>User Panel</h1>
+		</>
+	);
+        }		
+      }
+      </>
+    )
+  }
+}
+
+
+
+/////////////CSS Style in ReactJS////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//Inline CSS
+------------------
+
+import React from 'react'
+import Header from './Header'
+
+function Contact() {
+  return (
+    <div>
+      <Header/>
+        <h1 style={{color:"red", backgroundColor:"#000", textAlign:"center"}}>This is contact page</h1>
+    </div>
+  )
+}
+
+export default Contact
+
+//outline CSS
+-------------------
+
+import React from 'react'
+import Header from './Header'
+
+function Contact() {
+const mystyle={{color:"red", backgroundColor:"#000", textAlign:"center"}}
+  return (
+    <div>
+      <Header/>
+        <h1 style={mystyle}>This is contact page</h1>
+    </div>
+  )
+}
+
+//external CSS
+-------------------------
+
+import React from 'react'
+import "./Contact.css"    //external css import
+import Header from './Header'
+
+function Contact() {
+  return (
+    <div>
+      <Header/>
+        <h1 className="mystyle">This is contact page</h1>     //use className insteed of class
+    </div>
+  )
+}
+
+//module css (use for specific component)
+---------------------------
+1. crate a file "contact.module.css"
+2. add in Contact.jsx
+
+import React from 'react'
+import ContactStyle "./contact.modult.css"    //module css import
+import Header from './Header'
+
+function Contact() {
+  return (
+    <div>
+      <Header/>
+        <h1 className={ContactStyle.mystyle}>This is contact page</h1>     //use  model css
+    </div>
+  )
+}
+ 
+ 
+ 
+
+
 
 
 
