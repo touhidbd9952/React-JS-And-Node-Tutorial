@@ -632,6 +632,75 @@ function Contact() {
     </div>
   )
 }
+
+
+//////////////////////////////////////////////Create Form and send request to server/////////////////////////////////////////
+
+step-1: component create "StudentForm.jsx"
+	
+in "StudentForm.jsx"
+---------------------------
+import React, { Component } from 'react'
+
+export class StudentForm extends Component {
+    state = {
+        channelName : "", //channelName,Subscriber,Category,creationDate,About,checkbox
+        Subscriber : "",
+        Category : "",
+        creationDate : "",
+        About : "",
+        checkbox : false,
+    }
+
+    FormChange =(e)=>{
+        //console.log(e.target.value)
+        this.setState({
+            [e.target.name] : e.target.value
+        })
+    }
+
+    CheckBoxHandler = (e)=>{
+        this.setState({
+            checkbox:e.target.checked
+        })
+    }
+
+  render() {
+    const {channelName,Subscriber,Category,creationDate,About,checkbox} = this.state;
+    return (
+      <div className='col-md-6'>
+        <h2>StudentForm</h2>
+
+        <input type="text" name='channelName' placeholder='Channel Name' className='form-control' onChange={this.FormChange} value={channelName} />
+        <input type="text" name='Subscriber' placeholder='Subscriber' className='form-control' onChange={this.FormChange} value={Subscriber} />
+        <select name="Category" onChange={this.FormChange} value={Category} className='form-control'>
+            <option value="1">Programming 1</option>
+            <option value="2">Programming 2</option>
+        </select>
+        <input type="date" name='creationDate' value={creationDate} onChange={this.FormChange} className='form-control'/>
+        <textarea name="About"  cols="30" rows="10" onChange={this.FormChange} value={About} className='form-control' placeholder='About'></textarea>
+        <div>
+            <input type="radio" name='gender' value="male" onChange={this.FormChange}/> <label htmlFor="gender">Male</label>
+            <input type="radio" name='gender' value="female" onChange={this.FormChange}/> <label htmlFor="fegender">Female</label>
+        </div>
+        <div>
+        <label htmlFor="checkbox">I agree and continue</label>
+        <input type="checkbox" name='checkbox' checked={checkbox} onChange={this.CheckBoxHandler} />
+        </div>
+
+        <button className='btn btn-primary' onClick={()=>console.log(this.state)}>Submit</button>
+
+      </div>
+    )
+  }
+}
+
+export default StudentForm
+
+
+step-2: check data in console 
+
+step-3:
  
  
  
