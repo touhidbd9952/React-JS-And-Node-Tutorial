@@ -701,6 +701,30 @@ export default StudentForm
 step-2: check data in console 
 
 step-3:
+
+
+/////Template Literal//////////////////////////////////////////////
+
+in Template Literal, we can pass variable in string
+
+      {`your text ${variable} your text ${variable} `}
+
+
+import React from 'react'
+import ContactStyle "./contact.modult.css"    //module css import
+import Header from './Header'
+
+function Contact() {
+  return (
+    <div>
+      <Header/>
+        <h1>{`My address is ${address} `}</h1>     //use  Template literal
+    </div>
+  )
+}
+
+
+
  
  
  
