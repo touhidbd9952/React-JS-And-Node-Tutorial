@@ -1,0 +1,585 @@
+npm install bootstrap@4.5.0 --save		//for builtin class for design
+npm install reactstrap@8.5.1 --save		//for builtin component for design
+npm install react-popper@2.2.3 --save                           //
+npm install dateformat --save			//for date time
+
+
+step-2: connection
+--------------------------
+in "index.js", set below link
+
+	import 'bootstrap/dist/css/bootstrap.min.css'
+
+Step-3: save in local git repogitory
+
+	git add .
+	git commit -m "Setup Project Folder"
+
+Step-4: check git repogitory
+
+	git log --oneline
+
+Step-5: project start
+
+	npm start
+
+Step-6: project structure
+
+	src
+	|----components(folder)
+	|	|---header(folder)
+	|	|---body(folder)
+	|	|---footer(folder)
+	|	|---MainComponent.js
+
+///////////////////////////////////////////////////////////////////////////////////////////////
+
+Step-7: in "MainComponent.js"
+	
+	import React from 'react'
+
+	const MainComponent = () => {
+	   return (
+	       <div>
+
+	       </div>
+	    );
+	}
+
+	export default MainComponent;
+
+          in "App.js"
+          ---------------
+	import React from 'react'
+	import './App.css'
+	import MainComponent from './components/MainComponent';
+
+	function App() {
+	    return (
+	      <div className="">
+		<MainComponent />
+	      </div>
+	    );
+
+	}
+	export default App;
+
+Step-8:  in "header" folder create a file "Header.js"
+	in "Header.js"
+	-------------------
+	import React from 'react'
+
+	const Header = () => {
+	   return (
+	       <div>
+
+	       </div>
+	    );
+	}
+
+	export default Header;
+
+Step-9:  in "body" folder create a file "Body.js"
+	in "Body.js"
+	-------------------
+	import React from 'react'
+
+	const Body = () => {
+	   return (
+	       <div>
+
+	       </div>
+	    );
+	}
+
+	export default Body;
+
+Step-10:  in "footer" folder create a file "Footer.js"
+	in "Footer.js"
+	-------------------
+	import React from 'react'
+
+	const Footer = () => {
+	   return (
+	       <div>
+
+	       </div>
+	    );
+	}
+
+	export default Footer;
+
+Step-11: in "MainComponent.js" add "Header, Footer,  Body" component
+	
+	import React from 'react'
+	import Header from './header/Header';
+	import Body from './body/Body';
+	import Footer from './footer/Footer';
+
+	const MainComponent = () => {
+	   return (
+	       <div>
+		<Header />
+		<Body />
+		<Footer />
+	       </div>
+	    );
+	}
+
+	export default MainComponent;
+
+Step-12: save in git local repository
+
+	gt add .
+	git commit -m "Component Tree"
+
+///////////////////////////////////////////////////////////////////////////////////////////////////
+
+Step-13: create a file "Navigation.js" in "header" folder
+
+	in "Navigation.js"
+	--------------------------
+	import React from 'react';
+	import { Navbar, NavbarBrand } from 'reactstrap';
+
+	const  Navigation = () => {
+	   return (
+	       <div>
+		<Navbar dark color="dark">
+		   <div className="container">
+		      <NavbarBrand href="/">Restaurant</NavbarBrand>
+		   </div>
+		</Navbar>
+	       </div>
+	    );
+	}
+
+	export default Navigation;
+
+   //for help: https://reactstrap.github.io/
+
+	call "Navigation" component in "header.js"
+	----------------------------------------------------------
+
+	in "header.js"
+	------------------
+
+	import React from 'react'
+	import Navigation from './Navigation';
+
+	const Header = () => {
+	   return (
+	       <div>
+		<Navigation />
+	       </div>
+	    );
+	}
+
+	export default Header;
+
+Step-14: save in git local repository
+
+	git add .
+	git commit -m "Navigation bar using Reactstrap"
+
+
+////////////////////////// Data ////////////////////////////////////////////////////////////////////////
+
+1. create a folder "data" in src
+2. create a file "dishes.js" in "data" folder
+3. create a file "Menu.js" in "body" folder
+
+in "Menu.js" component
+----------------------------------
+	import React, { Component } from 'react'
+	import DISHES from '../../data/dishes.js';
+	import MenuItem from './MenuItem';
+
+	class Menu extends  Component {
+	   state = {
+	      dishes: DISHES
+	   }
+	
+	  render() {
+	    const menu = this.state.dishes.map(item =>{
+	       return (
+	          <div>
+		<MenuItem dish={item} key={item.id} />
+	          </div>
+	       );
+	    })
+
+	   return (
+	       <div className="container">
+		<div className="row">
+		   <div className="col-6">
+      			{menu}
+		   </div>
+		</div>
+	       </div>
+	    );
+                    }
+	}
+
+	export default Menu;
+
+
+4. create a file "MenuItem.js" as component in "body" folder
+
+	import React from 'react'
+	
+
+	const  MenuItem = (props) => {
+	   return (
+	       <div>
+		
+	       </div>
+	    );
+	}
+
+	export default MenuItem;
+
+5. call "Menu" component in "Body" component
+
+	import React from 'react';
+	import Menu from './Menu';
+
+	const Body = () => {
+	   return (
+	       <div>
+		<Menu />
+	       </div>
+	    );
+	}
+
+	export default Body;
+
+6. save in git local repository
+
+	git add .
+	git commit -m "Creating Menu Component"
+
+///////////////////////////// Design Menu Item///////////////////////////////////////////////////////////////////////
+
+in "Menuitem.js"
+----------------------
+	import React from 'react'
+	import { Card, CardImg, CardImgOverlay, CardBody, CardTitle } from 'reactstrap';
+
+	const  MenuItem = (props) => {
+	   return (
+	       <div>
+		<Card style={{ margin: "10px"}}>
+		  <CardBody>
+		     <CardImg 
+			src={props.dish.image} 
+			alt={props.dish.name}  
+			with="100%" 
+			style={{ opacity: "0.5"}} />
+
+		     <CardImgOverlay>
+			<CardTitle>{props.dish.name}</CardTitle>
+		     </CardImgOverlay>
+		  </CardBody>
+		</Card>
+	       </div>
+	    );
+	}
+
+	export default MenuItem;
+
+7. save in git local repository
+
+	git add .
+	git commit -m "Designing Menu Item"
+
+////////////////////////////////// Dish Detail Component ////////////////////////////////////////////////////////////////////////////////
+
+in "Menuitem.js"
+----------------------
+1. change cursor when mouse move on title. for this add a style
+
+	import React from 'react'
+	import { Card, CardImg, CardImgOverlay, CardBody, CardTitle } from 'reactstrap';
+
+	const  MenuItem = (props) => {
+	   return (
+	       <div>
+		<Card style={{ margin: "10px"}}>
+		  <CardBody>
+		     <CardImg 
+			src={props.dish.image} 
+			alt={props.dish.name}  
+			with="100%" 
+			style={{ opacity: "0.5"}} />
+
+		     <CardImgOverlay>
+			<CardTitle style={{ cursor: "pointer"}}>{props.dish.name}</CardTitle>
+		     </CardImgOverlay>
+		  </CardBody>
+		</Card>
+	       </div>
+	    );
+	}
+
+	export default MenuItem;
+
+2. create a component file "DishDetail.js" in "body" folder
+
+	in "DishDetail.js"
+	----------------------------
+	
+	import React from 'react';
+	
+
+	const  DishDetail = () => {
+	   return (
+	       <div>
+		
+	       </div>
+	    );
+	}
+
+	export default DishDetail;
+
+3. import "DishDetail" component in "Menu" component.
+    when user click on dish title, we need to pass this dish information
+    to a function to display particular dish details
+
+
+	import React, { Component } from 'react'
+	import DISHES from '../../data/dishes.js';
+	import MenuItem from './MenuItem';
+	import DishDetail from './DishDetail';
+
+	class Menu extends  Component {
+	   state = {
+	      dishes: DISHES,
+	      selectedDish: null,     //create a new property
+	   }
+
+	   onDishSelect = (dish) => {       //create a function
+	      this.setState({
+		selectedDish: dish,
+	      });
+	   }
+	
+	  render() {
+	    const menu = this.state.dishes.map(item =>{
+	       return (
+	          <div>
+		<MenuItem 
+			dish={item} 
+			key={item.id} 
+			onDishSelect = {this.onDishSelect}     //pass function
+		/>
+	          </div>
+	       );
+	    })
+
+	   return (
+	       <div className="container">
+		<div className="row">
+		   <div className="col-6">
+      			{menu}
+		   </div>
+		</div>
+	       </div>
+	    );
+                    }
+	}
+
+	export default Menu;
+
+
+4. in "MenuItem.js" component, in CardTitle set onClick function below way receive function and pass data
+
+	import React from 'react'
+	import { Card, CardImg, CardImgOverlay, CardBody, CardTitle } from 'reactstrap';
+
+	const  MenuItem = (props) => {
+	   return (
+	       <div>
+		<Card style={{ margin: "10px"}}>
+		  <CardBody>
+		     <CardImg 
+			src={props.dish.image} 
+			alt={props.dish.name}  
+			with="100%" 
+			style={{ opacity: "0.5"}} />
+
+		     <CardImgOverlay>
+			<CardTitle style={{ cursor: "pointer"}} onClick={() => props.onDishSelect(props.dish)}>{props.dish.name}</CardTitle>
+		     </CardImgOverlay>
+		  </CardBody>
+		</Card>
+	       </div>
+	    );
+	}
+
+	export default MenuItem;
+
+5. in "Menu.js" component
+
+	import React, { Component } from 'react'
+	import DISHES from '../../data/dishes.js';
+	import MenuItem from './MenuItem';
+	import DishDetail from './DishDetail';
+
+	class Menu extends  Component {
+	   state = {
+	      dishes: DISHES,
+	      selectedDish: null,     //create a new property
+	   }
+
+	   onDishSelect = (dish) => {       //create a function
+	      this.setState({
+		selectedDish: dish,
+	      });
+	   }
+	
+	  render() {
+	    const menu = this.state.dishes.map(item =>{
+	       return (
+	          <div>
+		<MenuItem 
+			dish={item} 
+			key={item.id} 
+			onDishSelect = {this.onDishSelect}     //pass function
+		/>
+	          </div>
+	       );
+	    })
+
+	//call DishDetail component and pass data
+	let dishDetail = null,
+	if(this.state.selectedDish != null)
+	{
+	    dishDetail = <DishDetail dish={this.state.state.selectedDish} />
+	}
+
+	   return (
+	       <div className="container">
+		<div className="row">
+		   <div className="col-6">
+      			{menu}
+		   </div>
+		   <div className="col-6">
+      			{dishDetail}
+		   </div>
+		</div>
+	       </div>
+	    );
+                    }
+	}
+
+	export default Menu;
+
+
+6. in "DishDetail.js" component
+
+	import React from 'react';
+	import { Card, CardImg, CardImgOverlay, CardBody, CardTitle, CardText } from 'reactstrap';
+
+	const  DishDetail = (props) => {
+	   return (
+	       <div>
+		<Card style={{ marginTop:"10px"}}>
+		    <CardImg top src={props.dish.image} alt={props.dish.name} />
+		   <CardBody style={{ textAlign: "left"}}>
+		      <CardTitle>{props.dish.name}</CardTitle>
+		      <CardText>
+			<p>{props.dish.description}</p>
+			<p>{props.dish.price}/-</p>
+		      </CardText>
+		   </CardBody> 
+		</Card>
+	       </div>
+	    );
+	}
+
+	export default DishDetail;
+
+7. save in git local repository
+
+	git add .
+	git commit -m "DishDetail Component"
+
+
+
+/////////////////////////// Comment Show in  DishDetail component ////////////////////////////////////////////////////////////////////////////////////
+
+1. create a file "LoadComments.js" in "body" folder
+2. in "LoadComments.js"
+
+	import React from 'react';
+	
+
+	const  LoadComments = (props) => {
+	   return (
+	       <div>
+		
+	       </div>
+	    );
+	}
+
+	export default LoadComments;
+
+3. import "LoadComments.js" in "DishDetail.js" component
+
+	import React from 'react';
+	import { Card, CardImg, CardImgOverlay, CardBody, CardTitle, CardText } from 'reactstrap';
+	import LoadComments from './LoadComments';
+
+	const  DishDetail = (props) => {
+	   return (
+	       <div>
+		<Card style={{ marginTop:"10px"}}>
+		    <CardImg top src={props.dish.image} alt={props.dish.name} />
+		   <CardBody style={{ textAlign: "left"}}>
+		      <CardTitle>{props.dish.name}</CardTitle>
+		      <CardText>
+			<p>{props.dish.description}</p>
+			<p>{props.dish.price}/-</p>
+		      </CardText>
+		   </CardBody> 
+		   
+		  <hr />		 
+		  <LoadComments comments ={props.dish.comments} />
+		</Card>
+	       </div>
+	    );
+	}
+
+	export default DishDetail;
+
+4. in "LoadComments.js"
+
+	import React from 'react';
+	import dateFormat from 'dateformat';
+	
+
+	const  LoadComments = (props) => {
+	   return (
+	       props.comments.map(comment =>{
+		return (
+		   <div key={comment.id}>
+		      <h5>{comment.author}</h5>
+		      <p>{comment.comment}</p>
+		      <p>{dateFormat(comment.date, "dddd, mmmm ds, yyyy, h:MM TT")}</p>
+		   </div>
+		);
+	      });
+	    );
+	}
+
+	export default LoadComments;
+
+5. save in git local repogitory
+
+	git add .
+	git commit -m "Comment added by Load Comments component"
+
+
+
+
