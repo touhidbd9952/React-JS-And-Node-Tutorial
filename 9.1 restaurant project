@@ -1,3 +1,72 @@
+////////Create React App/////////////////////////////////////////////////
+
+////Step:1/////////////////////////////////////////////////
+a. Open command prompt
+b. to create react app:
+	
+	npm install create-react-app  -g   // install react app globally
+	npm root  -g    // to see where created
+
+////project create////////////////////////////////////////////////
+
+a. create a folder in D drive  "My React Apps"
+b. open "My React Apps" --> cmd
+c. create react project:
+
+	create-react-app  restaurant    // create-react-app  project-name
+
+d. run project: 
+	
+	cd restaurant
+	npm start
+
+e. Browser: 
+
+	http://localhost:3000
+
+
+////clean messages///////
+open vscode
+
+1. go to public --> index.js  and clean all coments
+
+////Step-4: clean "App.js" as below///////////////////
+
+import './App.css'
+
+function App(){
+   return (
+     <div className="App">
+  
+         //remove inside all html code  
+    
+      </div>
+)
+}
+
+////Step-5: go to "App.css" and open it and remove all css code and below css//////////////////////////////
+
+*{
+    margin:0px;
+    padding:0px;
+}
+
+////Step-6: open "App.js" and type below and check in browser if shows, it means everything is ok/////////////////
+
+import './App.css'
+
+function App(){
+   return (
+     <div className="App">
+  
+         <h1>Hello Everybody</h1>  
+    
+      </div>
+)
+}
+
+///////////////install some package for restaurant project//////////////////////////////
+
 npm install bootstrap@4.5.0 --save		//for builtin class for design
 npm install reactstrap@8.5.1 --save		//for builtin component for design
 npm install react-popper@2.2.3 --save                           //
