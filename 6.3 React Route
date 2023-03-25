@@ -29,7 +29,7 @@
 	import About from "./pages/About";
 	import Contact from "./pages/Contact";
 	
-	import {BrowserRouter, Routes, Route} from "react-router-dom"   //import
+	import {BrowserRouter, Routes, Route, Redirect} from "react-router-dom"   //import
 
 	function App() {
 	    return (
@@ -39,6 +39,7 @@
 		     <Route path="/About" element={<About />}></Route>
 		     <Route path="/Contact" element={<Contact />}></Route>
 		     <Route path="/book/:id" render={() => <BookDetail book={this.state.selectedBook}  } />
+		     <Redirect from="/" to="/home" />
 	            <Routes/>
 	         </BrowserRouter>
 	     );
