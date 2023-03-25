@@ -43,10 +43,10 @@ To pass a function in react, you have to do below step
 	const  MenuItem = (props) => {
 	   return (
 	       <div>
-		      <h4>Menu List</h4>
-          <p>{props.dish.image}</p>
-          <p>{props.dish.name}</p>
-          <h6 onClick={props.deletemenu}>Delete Menu</h6>
+		<h4>Menu List</h4>
+          	<p>{props.dish.image}</p>
+          	<p>{props.dish.name}</p>
+          	<h6 onClick={props.deletemenu}>Delete Menu</h6>
           
 	       </div>
 	    );
