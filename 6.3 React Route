@@ -1,0 +1,109 @@
+////Step-1: create a file "Header.jsx" as component where navbar will set
+
+	import React from 'react'
+	import "./Header.css"      //import css
+
+	function Header(){
+	   return (
+	      <div className="Navbar">
+	         <li>Home</li>
+	         <li>About</li>
+	          <li>Contact</li>
+	      </div>
+	   )
+	}
+
+
+////Step-2: install react-router-dom  and set route path in "App.js"
+
+	npm install react-router-dom   
+	or 
+	npm i -D react-router-dom@latest
+	
+
+
+	in "App.js"
+	----------------
+	import "./App.css"
+	import Home from "./pages/Home";     
+	import About from "./pages/About";
+	import Contact from "./pages/Contact";
+	
+	import {BrowserRouter, Routes, Route} from "react-router-dom"   //import
+
+	function App() {
+	    return (
+	         <BrowserRouter>
+	           <Routes>
+		     <Route path="/" element={<Home />}></Route>
+		     <Route path="/About" element={<About />}></Route>
+		     <Route path="/Contact" element={<Contact />}></Route>
+	            <Routes/>
+	         </BrowserRouter>
+	     );
+	}
+
+
+Step-3: Create Header.jsx and add <Header> component in every page
+     //in Header.jsx
+     --------------------
+      	import React from 'react'
+	import "./Header.css"      //import css
+	import {Link} from "react-router-dom"   //import Link
+	
+	function Header(){
+	   return (
+	      <div className="">
+	         <ul>
+	            <li> <Link  to={"/"}>Home</Link> </h1>
+	            <li> <Link  to={"/About"}>About</Link> </h1>
+	            <li> <Link  to={"/Contact"}>Contact</Link> </h1>
+	         </ul>
+	      </div>
+	   )
+	}
+
+    //add Header component in Home.jsx
+    ---------------------
+	import React from 'react'
+	import "./Home.css"      //import css
+	import  Header from "./Header"   //import Header
+
+	function Home(){
+	   return (
+	      <div className="home">
+	         <Header />
+	         <h1>This is Home Page</h1>
+	      </div>
+	   )
+	}
+
+    //add Header component in About.jsx
+    ---------------------
+	import React from 'react'
+	import "./About.css"      //import css
+	import  Header from "./Header"   //import Header
+
+	function About(){
+	   return (
+	      <div className="">
+	         <Header />
+	         <h1>This is About Page</h1>
+	      </div>
+	   )
+	}
+
+    //add Header component in Contact.jsx
+    ---------------------
+	import React from 'react'
+	import "./Contact.css"      //import css
+	import  Header from "./Header"   //import Header
+
+	function Contact() {
+	   return (
+	      <div className="">
+	         <Header />
+	         <h1>This is Contact Page</h1>
+	      </div>
+	   )
+	}
