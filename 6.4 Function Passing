@@ -53,3 +53,85 @@ To pass a function in react, you have to do below step
 	}
 
 	export default MenuItem;
+
+
+
+//////////////////example 2///////////////////////////////////
+
+        import React, { Component } from 'react'
+	import DISHES from '../../data/dishes.js';
+	import MenuItem from './MenuItem';
+	import DishDetail from './DishDetail';
+
+	class Menu extends  Component {
+	   state = {
+	      dishes: DISHES,
+	      selectedDish: null,     
+	   }
+
+	   onDishSelect = (dish) => {       //create a function
+	      this.setState({
+		selectedDish: dish,
+	      });
+	   }
+	
+	  render() {
+	    const menu = this.state.dishes.map(item =>{
+	       return (
+	          <div>
+		<MenuItem 
+			dish={item} 
+			key={item.id} 
+			onDishSelect = {this.onDishSelect}     //pass function
+		/>
+	          </div>
+	       );
+	    })
+
+	   return (
+	       <div className="container">
+		<div className="row">
+		   <div className="col-6">
+      			{menu}
+		   </div>
+		</div>
+	       </div>
+	    );
+                    }
+	}
+
+	export default Menu;
+	
+	
+	///in "MenuItem.js" component//////////////////
+	
+	import React from 'react'
+	import { Card, CardImg, CardImgOverlay, CardBody, CardTitle } from 'reactstrap';
+
+	const  MenuItem = (props) => {
+	   return (
+	       <div>
+		<Card style={{ margin: "10px"}}>
+		  <CardBody>
+		     <CardImg 
+			src={props.dish.image} 
+			alt={props.dish.name}  
+			with="100%" 
+			style={{ opacity: "0.5"}} />
+
+		     <CardImgOverlay>
+		     
+			<CardTitle 
+				style={{ cursor: "pointer"}} 
+				onClick={() => props.onDishSelect(props.dish)}>
+				{props.dish.name}
+			</CardTitle>
+			
+		     </CardImgOverlay>
+		  </CardBody>
+		</Card>
+	       </div>
+	    );
+	}
+
+	export default MenuItem;
