@@ -1,7 +1,7 @@
 To pass a function in react, you have to do below step
 1.	Create function “deleteBookState”   as  deleteBookState = (index) => {}
 2.	Pass function to a variable  “delete={()=>this. deleteBookState }”
-3.	Pass function to a variable  “delete={()=>this. deleteBookState(index) }”
+3.	Pass function to a variable with parameter  “delete={()=>this. deleteBookState(index) }”
 4.	Call function   onClick={props.delete}
 
   import React, { Component } from 'react'
