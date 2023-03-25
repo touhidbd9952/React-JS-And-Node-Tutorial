@@ -1,0 +1,71 @@
+//////////////////////////Component Lifecycle//////////////////////////////////////////////////
+////Component Create Lifecycle////
+
+to create a component below function call
+1. constructor(pops)      //we can create state inside and outside constructor but we will not chage stage here
+2. componentWillMount()    //for inherit class but now this function has no use
+3. render()      //here we can change state
+4. Child Components call under render()
+5. componentDidMount()   //
+
+constructor(pops): when need to pass data to a class complonent, we will use props. for props, we need to write constructor(props)
+
+	constructor(props){
+	   super(props)
+	}
+      
+    to access props in render(), we must use "this" keywork
+
+	render(){
+	   return(
+	      <div>
+	         {
+	　　　　　this.props.books.map((book, index){
+		return (
+		  <Book 
+			bookName={book.bookName}
+			writer={book.writer}
+			delete={() => this.props.deleteBookState(index)}
+			key={book.id}
+			inputName={(event) => this.props.changeWithInputState(event, index)}
+		   />
+		);
+	            })
+	        }
+	     </div>
+	   );
+	}
+
+////Component Update Lifecycle////
+component can be update by 2 way
+1. props change
+2. state change
+
+Component Update Lifecycle by props:
+when component need to update by props below function below function will call one by one
+
+1. componentWillReceiveProps(nextProps)   //nextProps: updated props (this function will not use in future)
+2. shouldComponentUpdate(nextProps, nextState)  //nextState: updated state. this functin will return true or false. if true, component will update
+3. componentWillUpdate(nextProps, nextState)  //now this component is ready for update (this function will not use in future)
+4. render()
+5. update child component call under render()
+6. componentDidUpdate()
+
+Component Update Lifecycle by state:
+when component need to update by state below function below function will call one by one
+
+1. shouldComponentUpdate(nextProps, nextState)
+2. componentWillUpdate(nextProps, nextState)   //(this function will not use in future)
+3. render()
+4. update child component call under render()
+5. componentDidUpdate()
+
+Updated LifeCycle methods or hooks: (use for from react version 16.3)
+1. getDerivedStateFromProps(nextProps, prevState)  
+	//call when create component, when update component
+	a. from now getDerivedStateFromProps will use insteed of  (componentWillReceiveProps, componentWillUpdate)
+	b. static function
+
+2. getSnapshotBeforeUpdate()   can be use insteed of componentWillUpdate()
+
+
