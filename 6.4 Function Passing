@@ -123,7 +123,7 @@ To pass a function in react, you have to do below step
 		     
 			<CardTitle 
 				style={{ cursor: "pointer"}} 
-				onClick={() => props.onDishSelect(props.dish)}>
+				onClick={() => props.onDishSelect(props.dish)}>   //call function
 				{props.dish.name}
 			</CardTitle>
 			
