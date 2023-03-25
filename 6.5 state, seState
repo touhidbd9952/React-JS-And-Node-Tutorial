@@ -1,4 +1,5 @@
 //What is state and how to use it//////////////////
+state is a built-in React object that is used to contain data
 
 //create a state
 state = {}
@@ -11,3 +12,53 @@ state = {
 
 
 //how to change state properties value////////////
+to change valu of state use setState({})
+
+
+
+import React, { Component } from 'react'
+	import DISHES from '../../data/dishes.js';
+	import MenuItem from './MenuItem';
+	import DishDetail from './DishDetail';
+
+	class Menu extends  Component {
+	   state = {
+	      dishes: DISHES,
+	      selectedDish: null,     
+	   }
+
+	   onDishSelect = (dish) => {       //create a function
+	      this.setState({
+		selectedDish: dish,
+	      });
+	   }
+	
+	  render() {
+	    const menu = this.state.dishes.map(item =>{
+	       return (
+	          <div>
+		<MenuItem 
+			dish={item} 
+			key={item.id} 
+			onDishSelect = {this.onDishSelect}     //pass function
+		/>
+	          </div>
+	       );
+	    })
+
+	   return (
+	       <div className="container">
+		<div className="row">
+		   <div className="col-6">
+      			{menu}
+		   </div>
+		</div>
+	       </div>
+	    );
+                    }
+	}
+
+	export default Menu;
+
+
+
