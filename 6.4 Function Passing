@@ -22,7 +22,7 @@ To pass a function in react, you have to do below step
 	    const menu = this.state.dishes.map((item, index) =>{
 	       return (
 	          <div>
-		            <MenuItem 
+		    <MenuItem 
                      dish={item} 
                      key={item.id} 
                      deletemenu = {() => this.deleteitem(index)}   //pass function
