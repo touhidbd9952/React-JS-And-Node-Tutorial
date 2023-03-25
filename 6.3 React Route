@@ -107,3 +107,52 @@ Step-3: Create Header.jsx and add <Header> component in every page
 	      </div>
 	   )
 	}
+	
+	
+/////////////////Passing parameter to Route/////////////////////////////////////////////////////////////////////////////////////
+	
+	
+//App.js//////////////
+<Route path="/book" render={() => <BookDetail book={this.state.selectedBook}  } />
+
+"BookList.js"
+---------------------
+
+import React, { Component } from 'react';
+import Book from '../representational/Book';
+
+class BookList extends Component {
+  render(){
+       <Book
+	bookName = {book.bookName}
+	writer = {book.writer}
+	key = {book.id}
+	selectedBookHandler = {() => this.props.selectedBookHandler(book.id) }
+        />
+		
+  }
+
+}
+
+export default BookList;
+
+       ||
+       \/
+import React, { Component } from 'react';
+import Book from '../representational/Book';
+import { Link } from  'react-router-dom';
+
+class BookList extends Component {
+  render(){
+     <Link to="/book"  key = {book.id} >
+	<Book
+	    bookName = {book.bookName}
+	     writer = {book.writer}
+	     selectedBookHandler = {() => this.props.selectedBookHandler(book.id) }
+	 />
+    </Link>
+  }
+
+}
+
+export default BookList;
