@@ -1,5 +1,12 @@
 //What is state and how to use it//////////////////
 
+//create a state
+state = {}
+
+//assigning value in state
+state = {
+ key : value,
+}
 
 
 
