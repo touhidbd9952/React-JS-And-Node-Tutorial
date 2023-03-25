@@ -1,0 +1,54 @@
+1.	Create function “deleteBookState”   as  deleteBookState = (index) => {}
+2.	Pass function to a variable  “delete={()=>this. deleteBookState }”
+3.	Pass function to a variable  “delete={()=>this. deleteBookState(index) }”
+4.	Call function   onClick={props.delete}
+
+  import React, { Component } from 'react'
+	import DISHES from '../../data/dishes.js';
+	import MenuItem from './MenuItem';
+
+	class Menu extends  Component {
+	   state = {
+	      dishes: DISHES
+	   }
+     
+     //create function 
+     deleteitem = (index) => {
+       //your delete operation
+     }
+	
+	  render() {
+	    const menu = this.state.dishes.map((item, index) =>{
+	       return (
+	          <div>
+		            <MenuItem 
+                     dish={item} 
+                     key={item.id} 
+                     deletemenu = {() => this.deleteitem(index)}   //pass function
+                     />
+	          </div>
+	       );
+	    })
+    }
+	}
+
+	export default Menu;
+  
+  ////in MenuItem.js//////////////////////////////////
+  
+  import React from 'react'
+	import { Card, CardImg, CardImgOverlay, CardBody, CardTitle } from 'reactstrap';
+
+	const  MenuItem = (props) => {
+	   return (
+	       <div>
+		      <h4>Menu List</h4>
+          <p>{props.dish.image}</p>
+          <p>{props.dish.name}</p>
+          <h6 onClick={props.deletemenu}>Delete Menu</h6>
+          
+	       </div>
+	    );
+	}
+
+	export default MenuItem;
