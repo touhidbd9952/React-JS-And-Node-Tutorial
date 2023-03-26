@@ -1,0 +1,50 @@
+  in "Home.js"
+  ------------------
+  
+  import React from 'react';
+	
+	const  Home = (props) => {
+     document.title = "About";
+	   return (
+	       <div>
+		
+	       </div>
+	    );
+	}
+  export default Home;
+  
+  
+  in "About.js"
+  ------------------
+  
+  import React from 'react';
+	
+	const  About = (props) => {
+     document.title = "About";
+	   return (
+	       <div>
+		
+	       </div>
+	    );
+	}
+
+	export default About;
+  
+  
+  in "Contact.js"
+  ---------------------
+  
+  import React from 'react';
+	
+	const  Contact = (props) => {
+     document.title = "Contact";
+	   return (
+	       <div>
+		
+	       </div>
+	    );
+	}
+
+	export default Contact;
+
+
