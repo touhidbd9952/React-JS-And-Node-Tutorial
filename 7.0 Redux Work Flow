@@ -26,6 +26,92 @@ Dispatches/send	                        Redux Store ==================||
        ||					                      \/
 React Component  <============Updated State as Props<===========Subscription
 					                         (Automatic)
+
+
 								 
-								 
-								 
+Step-1: to use redux in react project we need to install redux
+
+	install redux --save
+        install react-redux --save
+
+Step-2: create a folder "redux" in "src"
+
+Step-3: create a file "reducer.js" in "redux" folder
+
+	in reducer.js
+	-----------------
+	import DISES from '../data/dishes';  //db table
+	import COMMENTS from '../data/comments'; //db table
+	
+	const initialState = {      
+	   dishes: DISES,
+	   comments: COMMENTS,
+	}
+
+	const Reducer = (state=initialState, action) => {
+	    return state;
+	}
+	
+	export Reducer;
+
+Step-4: create a file "store.js" in "redux" folder
+
+	in store.js
+	--------------------
+	import { createStore } from 'redux';
+	import { Reducer } from './reducer.js';
+
+	const myStore = createStore(Reducer);
+
+	export default myStore;
+
+Step-5: now we need to access database from component, so in "App.js" import redux store and import Provider from react-redux
+
+	import myStore from './redux/store.js';
+	import { Provider } from 'react-redux';
+
+	function App() {
+	 //console.log("App.js:", myStore.getState());  //to check data passing or not
+	  <Provider store={myStore}>   //store is a builtin keyword
+	    <BrowserRouter>
+  	      <MainComponent />
+	    </BrowserRouter>
+	  </Provider>
+	}
+	export default App;
+
+Step-6: to access global data (redux store) in component we need to "connect" react-redux to component
+
+	in "Menu.js" component
+	---------------------------------
+	import { connect } from 'react-redux';
+
+         //get necessary table from redux
+	const mapStateToProps = (state) => {
+	   return {
+	      dishes : state.dishes,
+	      comments: state.comments
+	   }
+	}
+
+	class Menu extends  Component {
+	   state = {
+	     selectedDish: null,
+	     modelOpen: false,
+	   }
+
+	   render() {
+	       return (
+	          <div>
+		<Menuitem
+	    		dishes = {this.props.dishes}
+	     		comments = {this.props.comments}
+	 	/>
+	          </div>
+	       );
+	  }
+	}
+	export default connect(mapStateToProps)(Menu);	//connect component with redux
+	
+	
+	
