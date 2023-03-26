@@ -1,0 +1,43 @@
+//////////////////////////////////////RESTAPI ////////////////////////////////////////////////////////////////
+
+Step-1: create a folder "myrestapi"
+Step-2: open "myrestapi"by vscode
+Step-3: create a file "db.json" where we will store all the data comming from server as json format
+             in "db.json" create a object as key value paire. first value should be blank
+	
+	{
+	    "dishes":[],
+	    "comments":[],
+	}
+
+Step-4: to convert our project as restapi, we need to install  json-server package globally
+
+	npm install json-server -g
+
+Step-5: now we can convert our "db.json" file to restapi. we need to execute below command
+	
+	json-server db.json --watch -p 3001           //--watch: is flag that will show our all the request in terminal
+				               //--watch flag help to our "myrestapi"autoreload if any update
+				               //occured in db.json file.
+				               //if we want to change port -p portnumber need to type. By 
+				               //default port is 3000
+Step-6: you can put data in "dishes" below way and copy "http://localhost:3001/dishes" and paste in browser to check
+
+     in "db.json"
+     -----------------
+     1.	{
+	    "dishes":[
+		{"id":0, "name":"Barger", "price":"199"},
+		{"id":1, "name":"Sanduice", "price":"150"},
+	],
+	    "comments":[],
+	}
+
+   2. copy "http://localhost:3001/dishes" and paste in browser to check
+   3. if you type "http://localhost:3001/dishes/0", you can see first record
+   
+   
+   
+   
+   
+   
