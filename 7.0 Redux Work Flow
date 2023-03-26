@@ -21,7 +21,7 @@ What is redux and How it works?
       Action	                 	  || Updated State
        /\                                 ||
        ||                                 \/
-Dispatches/send	                        Store ========================||
+Dispatches/send	                        Redux Store ==================||
        ||					                      ||
        ||					                      \/
 React Component  <============Updated State as Props<===========Subscription
