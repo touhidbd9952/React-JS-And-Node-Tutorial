@@ -18,11 +18,11 @@ What is redux and How it works?
        ||                                 ||
        ||                                 ||
        ||                                 || 
-      Action	                 	          || Updated State
+      Action	                 	  || Updated State
        /\                                 ||
        ||                                 \/
 Dispatches/send	                        Store ========================||
-       ||					                                                    ||
-       ||					                                                    \/
-React Component  <============Updated State as Props<===========	Subscription
-					                                                         (Automatic)
+       ||					                      ||
+       ||					                      \/
+React Component  <============Updated State as Props<===========Subscription
+					                         (Automatic)
