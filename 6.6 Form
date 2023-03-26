@@ -29,7 +29,23 @@ onchange = (event) => {
 }
 
 onSubmitHandler = (event) => {
-    console.log(this.state);
+    //console.log(this.state);
+    this.props.dispatch({
+	type: 'ADD_BOOK',     //store
+	payload: {  //data that will add in rating table
+		title: this.state.title,
+		writer: this.state.writer,
+		published: this.state.published,
+		bookcontent: this.state.bookcontent,
+	      }
+	});
+    //delete field value when form submited
+    this.setSate({     
+     	title: "",                                    
+        writer: "",
+        published: "",
+        bookcontent: "",
+   });
    event.preventDefault();    //to stop page reload
 }
 
