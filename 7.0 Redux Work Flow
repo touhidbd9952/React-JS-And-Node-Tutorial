@@ -1,0 +1,28 @@
+
+What is redux and How it works?
+1. redux has a central store
+2. every component can access it
+3. component can not change redux store data by it self
+4. when any component need to change redux store data, it send action to "Reducer function"
+5. in action, is define what type of change need to do
+6. only Reducer function can update Redux Store
+7. Reducer funtion takes two parameter (action, currentState)
+8. Reducer send "Updated State" to Redux Store
+9. when Reducer send "Updated State" to Redux Store, a function "Subscription" is automatically call
+8. after update Redux Store, Subscription function  pass Updated State as Props to the component
+
+                  Redux Work Flow
+
+
+       ||=============================>Reducer(CurrentState, Action)
+       ||                                 ||
+       ||                                 ||
+       ||                                 || 
+      Action	                 	          || Updated State
+       /\                                 ||
+       ||                                 \/
+Dispatches/send	                        Store ========================||
+       ||					                                                    ||
+       ||					                                                    \/
+React Component  <============Updated State as Props<===========	Subscription
+					                                                         (Automatic)
