@@ -1,0 +1,40 @@
+import React, { Component } from 'react';
+import './App.css';
+import axios from 'axios';
+
+class App extends Component {
+ 
+  componentDidMount(){
+                
+	//get data
+	//axios.get('https://jsonplaceholder.typicode.com/posts')
+	//.then(response => console.log(response));
+
+	//get data, if no data show error message
+	axios.get('https://jsonplaceholder.typicode.com/posts')
+	.then(response => response.data)
+	.then(data => console.log(data))
+	.catch(error => console.log(error.message));            //if no data, it will whow error in console mode
+	
+	//insrt data in dishes table
+	axios.post('http://localhost:3001/dishes', { name: "Pizza", price: "799" } )      //id no need to put
+	.then(response => console.log(response));
+
+	//update data
+	axios.put('http://localhost:3001/dishes/1', { name: "Pizza", price: "799" } )      //id no need to put
+	.then(response => console.log(response));
+
+	//delete data
+	axios.delete('http://localhost:3001/dishes/1')      
+	.then(response => console.log(response));
+	
+  }
+  render(){
+     <div>
+	
+    </div>
+  }
+
+}
+
+export default App;
