@@ -17,6 +17,13 @@ c. create react project:
 
 	create-react-app  hello-world    // create-react-app  project-name
 
+ after project create, we need to install some package
+ 
+	npm install bootstrap --save
+	npm install reactstrap --save
+	npm install react-popper --save
+	npm install axios --save
+
 d. run project: 
 	
 	cd hello-world
