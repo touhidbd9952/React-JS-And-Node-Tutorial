@@ -40,78 +40,337 @@ Step-3: create a file "reducer.js" in "redux" folder
 
 	in reducer.js
 	-----------------
-	import DISES from '../data/dishes';  //db table
-	import COMMENTS from '../data/comments'; //db table
-	
-	const initialState = {      
-	   dishes: DISES,
-	   comments: COMMENTS,
-	}
+import { combineReducers } from 'redux';
+import { InitialContactForm } from './forms';
+import { createForms } from 'react-redux-form';
+import * as actionTypes from './actionTypes';
 
-	const Reducer = (state=initialState, action) => {
-	    return state;
-	}
-	
-	export Reducer;
+const dishReducer = (dishState = { isLoading: false, dishes: [], errMess: null }, action) => {
+    switch (action.type) {
+        case actionTypes.DISHES_LOADING:
+            return {
+                ...dishState,
+                isLoading: true,
+                errMess: null,
+                dishes: []
+            }
+        case actionTypes.LOAD_DISHES:
+            return {
+                ...dishState,
+                isLoading: false,
+                errMess: null,
+                dishes: action.payload
+            }
+        case actionTypes.DISHES_FAILED:
+            return {
+                ...dishState,
+                isLoading: false,
+                errMess: action.payload,
+                dishes: []
+            }
+        default:
+            return dishState;
+    }
+}
+
+const commentReducer = (commentState = { isLoading: true, comments: [] }, action) => {
+    switch (action.type) {
+        case actionTypes.LOAD_COMMENTS:
+            return {
+                ...commentState,
+                isLoading: false,
+                comments: action.payload
+            };
+
+        case actionTypes.COMMENT_LOADING:
+            return {
+                ...commentState,
+                isLoading: true,
+                comments: []
+            };
+
+        case actionTypes.ADD_COMMENT:
+            let comment = action.payload;
+            //console.log(comment);
+            return {
+                ...commentState,
+                comments: commentState.comments.concat(comment)
+            };
+        default:
+            return commentState;
+    }
+}
+
+export const Reducer = combineReducers({
+    dishes: dishReducer,
+    comments: commentReducer,
+    ...createForms({
+        feedback: InitialContactForm
+    })
+});
+
+
+
+Step-4: create a file "actionTypes.js" in "redux" folder
+
+in actionTypes.js we need to write all the action
+--------------------------
+
+export const ADD_COMMENT = 'ADD_COMMENT';
+
+export const LOAD_COMMENTS = 'LOAD_COMMENTS';
+export const COMMENT_LOADING = 'COMMENT_LOADING';
+
+export const LOAD_DISHES = 'LOAD_DISHES';
+export const DISHES_LOADING = 'DISHES_LOADING';
+export const DISHES_FAILED = 'DISHES_FAILED';
+
+
+
+Step-4: create a file "actionCreators.js" in "redux" folder
+
+in "actionCreators.js"
+--------------------------
+
+import * as actionTypes from './actionTypes';
+import { baseUrl } from './baseUrl';
+import axios from 'axios';
+
+export const addComment = (dishId, rating, author, comment) => dispatch => {
+    const newComment = {
+        dishId: dishId,
+        author: author,
+        rating: rating,
+        comment: comment
+    }
+    newComment.date = new Date().toISOString();
+
+    axios.post(baseUrl + 'comments', newComment)
+        .then(response => response.data)
+        .then(comment => dispatch(commentConcat(comment)))
+}
+
+export const commentConcat = (comment) => ({
+    type: actionTypes.ADD_COMMENT,
+    payload: comment
+})
+
+export const commentLoading = () => ({
+    type: actionTypes.COMMENT_LOADING
+})
+
+export const loadComments = comments => ({
+    type: actionTypes.LOAD_COMMENTS,
+    payload: comments
+})
+
+export const fetchComments = () => dispatch => {
+    dispatch(commentLoading());
+
+    axios.get(baseUrl + 'comments')
+        .then(response => response.data)
+        .then(comments => dispatch(loadComments(comments)))
+}
+
+export const loadDishes = dishes => ({
+    type: actionTypes.LOAD_DISHES,
+    payload: dishes
+})
+
+export const dishesLoading = () => ({
+    type: actionTypes.DISHES_LOADING
+})
+
+export const dishesFailed = (errMess) => ({
+    type: actionTypes.DISHES_FAILED,
+    payload: errMess
+})
+
+export const fetchDishes = () => dispatch => {
+    dispatch(dishesLoading());
+
+    axios.get(baseUrl + "dishes")
+        .then(response => response.data)
+        .then(dishes => dispatch(loadDishes(dishes)))
+        .catch(error => dispatch(dishesFailed(error.message)))
+}
+
+
+
+Step-4: create a file "baseUrl.js" in "redux" folder
+
+in "baseUrl.js"
+-------------------
+export const baseUrl = 'http://localhost:3001/';
+
 
 Step-4: create a file "store.js" in "redux" folder
 
 	in store.js
 	--------------------
-	import { createStore } from 'redux';
-	import { Reducer } from './reducer.js';
+import { createStore, applyMiddleware } from 'redux';
+import { Reducer } from './reducer';
+import logger from 'redux-logger';
+import thunk from 'redux-thunk';
 
-	const myStore = createStore(Reducer);
+const myStore = createStore(Reducer, applyMiddleware(logger, thunk));
 
-	export default myStore;
+export default myStore;  
+
+
 
 Step-5: now we need to access database from component, so in "App.js" import redux store and import Provider from react-redux
 
-	import myStore from './redux/store.js';
-	import { Provider } from 'react-redux';
+import React from 'react';
+import './App.css';
+import MainComponent from './components/MainComponent';
+import { BrowserRouter } from 'react-router-dom';
+import myStore from './redux/store';
+import { Provider } from 'react-redux';
 
-	function App() {
-	 //console.log("App.js:", myStore.getState());  //to check data passing or not
-	  <Provider store={myStore}>   //store is a builtin keyword
-	    <BrowserRouter>
-  	      <MainComponent />
-	    </BrowserRouter>
-	  </Provider>
-	}
-	export default App;
+function App() {
+  //console.log("App.js: ", myStore.getState());
+  return (
+    <div className="App">
+      <Provider store={myStore}>
+        <BrowserRouter>
+          <MainComponent />
+        </BrowserRouter>
+      </Provider>
+    </div>
+  );
+}
+
+export default App;
+
+
 
 Step-6: to access global data (redux store) in component we need to "connect" react-redux to component
 
 	in "Menu.js" component
 	---------------------------------
-	import { connect } from 'react-redux';
+	import React, { Component } from 'react';
+import MenuItem from './MenuItem';
+import DishDetail from './DishDetail';
+import { CardColumns, Modal, ModalBody, ModalFooter, Button, Alert } from 'reactstrap';
+import { connect } from 'react-redux';
+import { addComment, fetchDishes, fetchComments } from '../../redux/actionCreators';
+import Loading from './Loading';
 
-         //get necessary table from redux
-	const mapStateToProps = (state) => {
-	   return {
-	      dishes : state.dishes,
-	      comments: state.comments
-	   }
-	}
+const mapStateToProps = (state) => {
+    return {
+        dishes: state.dishes,
+        comments: state.comments
+    }
+}
 
-	class Menu extends  Component {
-	   state = {
-	     selectedDish: null,
-	     modelOpen: false,
-	   }
+const mapDispatchToProps = (dispatch) => {
+    return {
+        addComment: (dishId, rating, author, comment) => dispatch(addComment(dishId, rating, author, comment)),
+        fetchDishes: () => dispatch(fetchDishes()),
+        fetchComments: () => dispatch(fetchComments())
+    }
+}
 
-	   render() {
-	       return (
-	          <div>
-		<Menuitem
-	    		dishes = {this.props.dishes}
-	     		comments = {this.props.comments}
-	 	/>
-	          </div>
-	       );
-	  }
-	}
-	export default connect(mapStateToProps)(Menu);	//connect component with redux
+class Menu extends Component {
+    state = {
+        selectedDish: null,
+        modalOpen: false
+    }
+    
+    //after component create, first call componentDidMount()
+    componentDidMount() {
+        this.props.fetchDishes();   
+        this.props.fetchComments();
+    }
+
+
+
+    onDishSelect = dish => {
+        this.setState({
+            selectedDish: dish,
+            modalOpen: !this.state.modalOpen
+        });
+    }
+
+    toggleModal = () => {
+        this.setState({
+            modalOpen: !this.state.modalOpen
+        })
+    }
+
+    
+
+    render() {
+        document.title = "Menu";
+
+        //When loading data
+        if (this.props.dishes.isLoading) {
+            return (
+                <Loading />
+            );
+        }
+        //When loading problem
+        else if (this.props.dishes.errMess != null) {
+            return (
+                <Alert color="danger">{this.props.dishes.errMess}</Alert>
+            );
+        }
+        //When loaded
+        else {
+            const menu = this.props.dishes.dishes.map(item => {
+                return (
+                    <MenuItem
+                        dish={item}
+                        key={item.id}
+                        DishSelect={() => this.onDishSelect(item)}
+                    />
+                );
+            })
+
+
+
+            
+            let dishDetail = null;
+            if (this.state.selectedDish != null) {
+                const comments = this.props.comments.comments.filter(comment => comment.dishId === this.state.selectedDish.id
+                )
+                dishDetail = <DishDetail
+                    dish={this.state.selectedDish}
+                    comments={comments}
+                    addComment={this.props.addComment}
+                    commentsIsLoading={this.props.comments.isLoading} />
+            }
+
+
+
+
+
+            return (
+                <div className="container">
+                    <div className="row">
+                        <CardColumns>
+                            {menu}
+                        </CardColumns>
+                        <Modal isOpen={this.state.modalOpen}>
+                            <ModalBody>
+                                {dishDetail}
+                            </ModalBody>
+                            <ModalFooter>
+                                <Button color="secondary" onClick={this.toggleModal}>
+                                    Close
+                                </Button>
+                            </ModalFooter>
+                        </Modal>
+                    </div>
+                </div>
+            );
+        }
+
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Menu);
 	
 	
 	
