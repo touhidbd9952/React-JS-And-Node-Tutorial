@@ -31,8 +31,8 @@ React Component  <============Updated State as Props<===========Subscription
 								 
 Step-1: to use redux in react project we need to install redux
 
-	install redux --save
-        install react-redux --save
+	npm install redux --save
+        npm install react-redux --save
 
 Step-2: create a folder "redux" in "src"
 
