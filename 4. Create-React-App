@@ -19,10 +19,15 @@ c. create react project:
 
  after project create, we need to install some package
  
-	npm install bootstrap --save
-	npm install reactstrap --save
-	npm install react-popper --save
-	npm install axios --save
+	npm install bootstrap --save  //https://www.npmjs.com/package/bootstrap
+	npm install reactstrap --save  //https://www.npmjs.com/package/reactstrap
+	npm install react-popper --save  //https://www.npmjs.com/package/react-popper
+	npm install axios --save   //https://axios-http.com/docs/intro
+	
+	npm install redux --save  //https://redux.js.org/introduction/getting-started
+	npm install react-redux --save   //https://react-redux.js.org/introduction/getting-started
+	npm install reactstrap react react-dom --save   //https://reactstrap.github.io/?path=/story/home-installation--page
+	npm install redux-thunk    //https://www.npmjs.com/package/redux-thunk
 
 d. run project: 
 	
