@@ -1,0 +1,119 @@
+import React, { Component } from 'react';
+import Header from '../../Header/Header.js';
+import Footer from '../../Footer/Footer.js';
+import emailjs from '@emailjs/browser';
+
+//https://www.emailjs.com/
+//npm install email-js --save
+//<a href="mailto:`{email}`?subject={subject}&body={body}">Click to Send an Email</a>
+
+
+
+
+class Contact extends Component {
+  state = {
+    name: '',
+    email: '',
+    message: '',
+
+    alertShow: false,
+    alertText: null,
+    alertType: null
+  }
+
+  onChangeHandler = (event) => {
+    const value = event.target.type === 'checkbox' ? event.target.checked : event.target.value;
+    const name = event.target.name;
+    this.setState({
+      [name]: value
+    });
+  }
+
+  onSubmitHandler = (data) => {
+    data.preventDefault(); // prevents the page from reloading when you hit “Send”
+
+    emailjs.sendForm('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', form.current, 'YOUR_PUBLIC_KEY')
+      .then((result) => {
+        // show the user a success message
+        if (result === 201) {
+          this.setState({
+            alertShow: true,
+            alertText: "Email Send Successfully",
+            alertType: "success"
+          });
+
+          this.setState({
+            name: '',
+            email: '',
+            message: '',
+          });
+
+          setTimeout(() => {
+            this.setState({
+              alertShow: false
+            })
+          }, 2000)
+        }
+      }, (error) => {
+        // show the user an error
+        this.setState({
+          alertShow: true,
+          alertText: error.messages,
+          alertType: "danger"
+        });
+        setTimeout(() => {
+          this.setState({
+            alertShow: false
+          })
+        }, 2000)
+      });
+  }
+
+  render() {
+    return (
+      <div>
+
+        <Header />
+
+        <div className='container'>
+          <div className='row'>
+            <div className='col-md-6' style={{ marginTop: "20px", marginBottom: "50px" }}>
+
+              <div className="col-12">
+                <h3>User Creation Form</h3>
+                <Alert isOpen={this.state.alertShow} color={this.state.alertType}>{this.state.alertText}</Alert>
+              </div>
+
+              <form onSubmit={(data) => this.onSubmitHandler(data)}>
+                <div className="mb-3">
+                  <label for="inputName" className="form-label">Name</label>
+                  <input type="text" name='name' id="name" value={this.state.name} required onChange={(event) => this.onChangeHandler(event)} className="form-control" />
+                </div>
+                <div className="mb-3">
+                  <label for="exampleInputEmail1" className="form-label">Email address</label>
+                  <input type="email" name='email' id="email" value={this.state.email} required onChange={(event) => this.onChangeHandler(event)} className="form-control" aria-describedby="emailHelp" />
+                  <div id="emailHelp" className="form-text">We'll never share your email with anyone else.</div>
+                </div>
+                <div className="mb-3">
+                  <label for="exampleInputMessage" className="form-label">Message</label>
+                  <input type="textarea" name='message' id="message" value={this.state.pass} required onChange={(event) => this.onChangeHandler(event)} className="form-control" />
+                </div>
+
+                <button type="submit" className="btn btn-primary">Send</button>
+              </form>
+            </div>
+
+          </div>
+        </div>
+
+        <Footer />
+
+      </div>
+    )
+  }
+
+}
+
+export default Contact
+
+
