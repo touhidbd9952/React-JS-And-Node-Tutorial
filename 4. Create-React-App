@@ -28,6 +28,10 @@ c. create react project:
 	npm install react-redux --save   //https://react-redux.js.org/introduction/getting-started
 	npm install reactstrap react react-dom --save   //https://reactstrap.github.io/?path=/story/home-installation--page
 	npm install redux-thunk    //https://www.npmjs.com/package/redux-thunk
+	
+	npm install react-router-dom   
+	or 
+	npm i -D react-router-dom@latest
 
 d. run project: 
 	
