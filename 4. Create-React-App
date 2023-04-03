@@ -168,24 +168,26 @@ function App(){
 
 	in "App.js"
 	----------------
-	import "./App.css"
-	import Home from "./pages/Home";     
-	import About from "./pages/About";
-	import Contact from "./pages/Contact";
-	
-	import {BrowserRouter, Routes, Route} from "react-router-dom"   //import
+import './App.css';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import Home from './components/Body/Home/Home';
+import Aboutus from './components/Body/Aboutus/Aboutus';
+import Contact from './components/Body/Contact/Contact';
 
-	function App() {
-	    return (
-	         <BrowserRouter>
-	           <Routes>
-		     <Route path="/" element={<Home />}></Route>
-		     <Route path="/About" element={<About />}></Route>
-		     <Route path="/Contact" element={<Contact />}></Route>
-	            <Routes/>
-	         </BrowserRouter>
-	     );
-	}
+function App() {
+  return (
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" exact element={<Home />} />
+        <Route path="/aboutus" element={<Aboutus />} />
+        <Route path="/contact" element={<Contact />} />
+        
+      </Routes>
+    </BrowserRouter>
+  );
+}
+
+export default App;
 
 
 Step-11: Create Header.jsx and add <Header> component in every page
