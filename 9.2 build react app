@@ -1,0 +1,63 @@
+
+Step-1: Create react app
+------------------------------------------------
+npm init react-app projectname
+or
+npx create-react-app projectname
+
+Step-2: complete your react app
+
+Step-3: to bild react app
+------------------------------------------------
+npm run build
+
+
+Due to react update, Those who created react app by "create-react-app projectname"
+they will face some problem. for them need to do below step
+
+1. uninstall create-react-app globally
+
+	npm uninstall create-react-app -g
+
+2. now create a folder in d drive and open it by command prompt
+
+	npm init react-app projectname
+
+3. remove "src" folder from new project. copy old created project "src" and paste here
+
+4. open new project by vscode
+5. open "package.json" file and change "dependencies" by our created project "dependencies"
+
+	:
+	:
+	"dependencies": {
+
+		//change all the package by our created old project package
+
+	}
+	:
+	:
+
+6. now we need run below command
+
+	npm install
+
+7. now we need to change "title" of title bar
+
+	go to public-->index.html and change title
+
+8. add all the css, js link in index.html from old project
+
+9. in public folder create "css","js","assets" folder
+10. copy css file from old project to new project "css" folder
+11. copy js file from old project to new project "js" folder
+12. create "img" folder in "assets" folder and copy all image file in here
+
+13. after task finish, we need to "build" react project
+
+	npm run build
+
+
+
+	
+
