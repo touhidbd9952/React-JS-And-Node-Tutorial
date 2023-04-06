@@ -1,0 +1,38 @@
+////How to host react js website application in cpanel//////
+
+step-1: open react project in vscode
+
+step-2: in "public" folder, add a ".htaccess"
+
+	in ".htaccess"
+	------------------------------
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteBase /
+    RewriteRule ^index\.html$ - [L]
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteCond %{REQUEST_FILENAME} !-l
+    RewriteRule . /index.html [L]
+</IfModule>
+
+
+step-3: in "package.json" file, add below line
+
+	"homepage": "https://your domain name",
+
+step-3: build your react app in production mode
+
+	npm run build
+
+step-4: open "build" folder and select all file (Ctrl +l) --> Send to --> Compress Folder
+
+ some file we don't need
+	1. asset-mainifest.json
+	2. manifest.json
+	3. robots.txt
+
+step-5: login to cpanel -->filemanager and create subdomain
+step-6: open subdomain folder and upload zip file
+step-7: axtract zip
+step-8: now check in browser
