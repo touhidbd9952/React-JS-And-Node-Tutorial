@@ -1,0 +1,108 @@
+use of "useState"
+---------------------------
+in react functional component, we can not use state. if we need to use state
+then we need to use "useState". it retun an array. this array has 2 index.
+first index is for initial value and second index is for update value.
+
+var abc ="";
+abc = "Hello World";
+
+import React, { useState } from 'react';
+
+function Test(props)
+{
+   const testState = useState("");   //initial value
+  
+  if(testState[0] == "")
+  {
+     testState[1]("Hello World")  //update value
+  }
+
+   return (
+	<div>
+	   <h3>{testState[0]}</h3>     //Hello World
+	</div>
+   );
+}
+
+export default Test; 
+
+
+//////////////////////////////////////////////////////////
+
+use of Array Destructuring
+-------------------------------------
+we can use "useState" is more batter way by Array Destructuring.
+we have to remember, we can only change state value inside a function or 
+if condition. we can not call "setMyInfo" from outside. useState should be 
+place at top of a function.
+
+
+import React, { useState } from 'react';
+
+function Test(props)
+{
+   const [name, setValue] = useState("");   //initial value
+   const [myInfo, setMyInfo] = useState({});
+  
+  const changeState = () =>{
+     setValue("Karim");
+     setMyInfo({
+       age: 30,
+       address: "Dhaka, Bangladesh",
+     });
+  }
+
+   return (
+	<div>
+
+	  <button onClick={changeState}>Show</button>
+
+	   <h3>{name}</h3>     //Karim
+                     <h4>myInfo.age</h4>
+	   <h4>myInfo.address</h4>
+	</div>
+   );
+}
+
+export default Test; 
+
+
+///////////////////////////////////////////////////////////////////////////////////////////////////
+use of useEffect
+---------------------------
+
+import React, { useState, useEffect } from 'react';
+
+function Test(props)
+{
+   const [name, setValue] = useState("");   //initial value
+   const [myInfo, setMyInfo] = useState({});
+  
+  const changeState = () =>{
+     setValue("Karim");
+     setMyInfo({
+       age: 30,
+       address: "Dhaka, Bangladesh",
+     });
+  }
+
+  //componentDidMount
+  //componentDidUpdate
+  useEffect({
+      console.log("MyInfo", myInfo);
+  });
+
+   return (
+	<div>
+
+	  <button onClick={changeState}>Show</button>
+
+	   
+	</div>
+   );
+}
+
+export default Test; 
+
+
