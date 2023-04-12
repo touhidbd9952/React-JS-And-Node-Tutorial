@@ -16,6 +16,7 @@ b. open "My React Apps" --> cmd
 c. create react project:
 
 	create-react-app  hello-world    // create-react-app  project-name
+	npx create-react-app hello-world // create new project 
 
  after project create, we need to install some package
  
