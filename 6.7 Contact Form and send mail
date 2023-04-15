@@ -1,3 +1,7 @@
+https://www.google.com/search?q=send+email+from+react+app&sxsrf=APwXEddMXd60gm4La79ZuSdUHbRSUJmkhQ%3A1681570191281&source=hp&ei=j7k6ZMfmDtiR-Abpr4uIBA&iflsig=AOEireoAAAAAZDrHnycIHlfnSY85D2UDZqs_bt8e9_sJ&oq=send+mail+from+rea&gs_lcp=Cgdnd3Mtd2l6EAEYATIHCAAQgAQQCjIHCAAQgAQQCjIFCAAQgAQyBwgAEIAEEAoyBwgAEIAEEAoyBwgAEIAEEAoyBwgAEIAEEAoyCAgAEBYQHhAKMggIABAWEB4QDzIGCAAQFhAeOgQIIxAnOgsILhCABBDHARDRAzoFCC4QgAQ6CwguEIAEEMcBEK8BOggILhCABBDUAlAAWLQyYOZSaABwAHgAgAGXAYgB-w2SAQM5LjmYAQCgAQE&sclient=gws-wiz#fpstate=ive&vld=cid:a63ef5b6,vid:I4DKr1JLC50
+
+
+
 import React, { Component } from 'react';
 import Header from '../../Header/Header.js';
 import Footer from '../../Footer/Footer.js';
