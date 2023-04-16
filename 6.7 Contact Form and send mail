@@ -6,10 +6,12 @@ import React, { Component } from 'react';
 import Header from '../../Header/Header.js';
 import Footer from '../../Footer/Footer.js';
 import emailjs from '@emailjs/browser';
+import Alert from 'react-bootstrap/Alert';
 
 //https://www.emailjs.com/
 //npm install email-js --save
 //<a href="mailto:`{email}`?subject={subject}&body={body}">Click to Send an Email</a>
+//npm install react-bootstrap bootstrap
 
 
 
