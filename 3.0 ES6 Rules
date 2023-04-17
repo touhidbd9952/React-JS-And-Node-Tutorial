@@ -1,0 +1,109 @@
+1. variable 
+2. function
+3. class
+4. spread and rest operator
+5. destructuring
+6. array mapping
+7. import and export
+
+variable
+---------------------------------------------------
+// var
+var a = 45;
+console.log(a);
+var a = "Bohubrihi";
+console.log(a);
+
+// let (one time declaration)
+let b = 35;
+console.log(b);
+b = "Simanta"
+console.log(b);
+
+// const => constant
+const c = 23;
+console.log(c);
+
+function
+---------------------------------------------
+// Normal 
+function retSome(num) {
+  return num*num;
+}
+
+// Arrow Function
+let retSome = (num) => num*num;
+
+
+class
+----------------------------------------------
+// Classes - Blueprint to create objects
+class Vehicle {
+  constructor(param1, param2) {
+    this.color = param1;
+    this.passenger = param2;
+  }
+  saySomething() {
+    console.log(this.color);
+  }
+}
+// Inheritance
+// Derived Class
+class Car extends Vehicle {
+  constructor(numWheel, pass, color) {
+    super(color, pass);
+    this.wheel = numWheel;
+  }
+}
+
+let obj1 = new Car(4, 6, "Yellow");
+console.log(obj1);
+
+Spread Operator ... [split item of 2 or more array or object into 1]
+-----------------------------------------------
+// Spread Operator
+let numbers= [1 ,2 ,5, 7]
+let numbers2 = [7, 8, 9]
+let arr = [ ...numbers, ...numbers2, 6, 7, 10];   //use to add 2 or more array in 1 array
+
+let person = {
+  name : "x",
+  age : 45
+}
+
+let another = { ...person, nationality: "Bangladeshi"}  //use to add 2 or more object in 1 object
+console.log(another);
+
+
+// Rest Operator/marge Operator
+let something = (...numArr) => console.log(numArr);
+
+something(numbers, 9, 13, 15, 18);  //[1 ,2 ,5, 7, 9, 13, 15, 18]
+
+
+Destructing/Shortcut way to declare multiple variable
+---------------------------------------------------------------------------
+let arr =[1, 5, 9];
+let [a, b, c] = arr  // a=1  b=5  c=9
+
+
+Array Mapping / For loop
+-------------------------------------------------------------------------
+let numbers = [1, 2, 3, 4, 5]
+
+let squares = numbers.map(function(item) {
+  return item*item;
+});
+
+
+export, import (variable, array, function, object)
+------------------------------------------------------------------------
+in file1.js
+--------------------
+export let a=5;
+
+in file2.js
+-------------------
+import { a } from './file1.js';
+console.log(a);
+
