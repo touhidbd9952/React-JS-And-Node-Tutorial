@@ -1,0 +1,167 @@
+//////Redux use in React/////////////////////
+
+Step-1: Package Install
+
+	npm install redux --save
+	npm install react-redux --save
+
+Step-2: Create a folder "redux" in "src"
+
+Step-3: Create a file "reducer.js" in "src/redux"
+
+  in "reducer.js"
+---------------------
+
+const initialState = {
+	loger_id:"",
+	loger_name:"",
+	loger_email:""
+}
+
+export const Reducer = (state = initialState, action) => {
+	return state;
+}
+
+
+Step-4: Create a file "store.js" in "src/redux"
+
+in "store.js"
+--------------------
+
+import { createStore } from 'redux';
+import { Reducer } from './reducer.js';
+
+const myStore = createStore(Reducer);
+
+export default myStore;
+
+
+Step-5: Connect "myStore" in React App
+
+in "App.js"
+------------------
+import myStore from './redux/store.js';
+import { Provider } from 'react-redux';
+
+function App() {
+                 //console.log("App.js:", myStore.getState());  //check all state property and value
+	return (
+	   <div className="App">
+		<Provider store={myStore}>
+		   <BrowserRouter>
+		      
+		   </BrowserRouter>
+		</Provider>
+	   </div>
+	);
+}
+
+
+Step-6: Use State from component
+
+a. in "Home.js"  (first create a class component "Home.js")
+-----------------
+
+import React, {Component} from 'react';
+
+class Home extends Component {
+	render(){
+		return (
+			<div>
+
+			</div>
+		);
+	}
+}
+
+export default Home;
+
+b. check what is in state and what is in props in componentDidMount(){} (after connect redux)
+
+import React, {Component} from 'react';
+
+class Home extends Component {
+	componentDidMount(){
+		//console.log("State:", this.state);
+		//console.log("Props:", this.props);
+	}
+
+	render(){
+		return (
+			<div>
+
+			</div>
+		);
+	}
+}
+
+export default Home;
+
+
+c. to connect redux store in "Home.js", we need to connect react-redux in this page
+
+import React, {Component} from 'react';
+import { connect } from 'react-redux';   //1. import connect
+
+//2. create a function that take state as parameter
+const mapStateToProps = (state) => {
+	//4. now we can check what is in state of redux store
+  	console.log("mapStateToProps:",state);
+
+	return {
+		//get value from state
+		loger_id: state.loger_id,
+		loger_name: state.loger_name,
+		loger_email: state.loger_email,
+	}
+}
+
+class Home extends Component {
+	componentDidMount(){
+		
+	}
+
+	render(){
+		return (
+			<div>
+
+			</div>
+		);
+	}
+}
+
+export default connect(mapStateToProps)(Home);      //3. connect mapStateToProps with Home component
+
+d. now we will use redux state as props in "Home.js"
+
+import React, {Component} from 'react';
+import { connect } from 'react-redux';   //1. import connect
+
+const mapStateToProps = (state) => {
+	return {
+		//get value from state
+		loger_id: state.loger_id,
+		loger_name: state.loger_name,
+		loger_email: state.loger_email,
+	}
+}
+
+class Home extends Component {
+	componentDidMount(){
+		
+	}
+
+	render(){
+		return (
+			<div>
+				Loger Name: {this.props.loger_name} <br>
+				Loger Email: {this.props.loger_email}
+			</div>
+		);
+	}
+}
+
+export default connect(mapStateToProps)(Home);
+
+
+
